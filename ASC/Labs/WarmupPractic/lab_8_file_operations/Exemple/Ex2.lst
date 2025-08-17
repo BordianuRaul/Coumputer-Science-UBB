@@ -1,0 +1,241 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit, fopen, fclose, fread, scanf, printf               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  import fopen msvcrt.dll
+    11                                  import fclose msvcrt.dll
+    12                                  import fread msvcrt.dll
+    13                                  import scanf msvcrt.dll
+    14                                  import printf msvcrt.dll
+    15                                  
+    16                                  ; our data is declared here (the variables needed by our program)
+    17                                  segment data use32 class=data
+    18                                      ; 2.Se citeste de la tastatura un numar si din fisier un cuvant. Daca numarul este par se cere criptarea cuvantului prin adunarea la fiecare caracter a numarului 20. Daca numarul este impar se cere criptarea cuv
+    19                                      
+    20 00000000 00000000                    n dd 0
+    21 00000004 6E203D2000                  format_print_n db "n = ",0
+    22 00000009 256400                      format_read_n db "%d",0
+    23                                      
+    24 0000000C 637576616E742E7478-         filename db "cuvant.txt",0
+    24 00000015 7400               
+    25 00000017 FFFFFFFF                    file_descriptor dd -1
+    26 0000001B 7200                        access_mode db "r",0
+    27                                      
+    28 0000001D 257300                      format_read_string db "%s",0
+    29 00000020 257300                      format_print_string db "%s",0
+    30                                      len equ 100
+    31 00000023 <res 00000064>              string resb len
+    32                                      
+    33                                      
+    34                                  
+    35                                  ; our code starts here
+    36                                  segment code use32 class=code
+    37                                      start:
+    38                                          ; 
+    39                                          
+    40 00000000 68[04000000]                    push dword format_print_n
+    41 00000005 FF15[00000000]                  call [printf]
+    42 0000000B 83C404                          add esp, 4
+    43                                          
+    44 0000000E 68[00000000]                    push n
+    45 00000013 68[09000000]                    push dword format_read_n
+    46                                          call esp, 4 * 2
+    46          ******************       error: invalid combination of opcode and operands
+    47                                          
+    48                                          ;OPEN FILE
+    49                                          
+    50 00000018 68[1B000000]                    push dword access_mode
+    51 0000001D 68[0C000000]                    push dword filename
+    52 00000022 FF15[00000000]                  call [fopen]
+    53 00000028 83C408                          add esp, 4 * 2
+    54                                          
+    55 0000002B 83F800                          cmp eax, 0
+    56 0000002E 0F84F5000000                    je final
+    57                                          
+    58 00000034 A3[17000000]                    mov [file_descriptor], eax
+    59                                          
+    60                                          ;OPEN FILE
+    61                                          
+    62                                          while:
+    63 00000039 FF35[17000000]                      push dword [file_descriptor]
+    64 0000003F 6A64                                push dword len
+    65 00000041 6A01                                push dword 1
+    66 00000043 68[23000000]                        push dword string
+    67 00000048 FF15[00000000]                      call [fread]
+    68 0000004E 83C410                              add esp, 4 * 4
+    69                                              
+    70 00000051 83F800                              cmp eax, 0
+    71                                              
+    72 00000054 0F84AD000000                        je break
+    73                                              
+    74 0000005A 83F864                              cmp eax, 100
+    75                                              
+    76 0000005D 7400                                je not_last_read
+    77                                              
+    78                                              mov [string + eax], 0
+    78          ******************       error: operation size not specified
+    79                                              
+    80                                              not_last_read:
+    81                                              
+    82                                              ;PROBLEMA IN SINE
+    83                                                  
+    84 0000005F 66A1[00000000]                          mov AX, [n]
+    85                                                  
+    86                                                  div byte 2
+    86          ******************       error: invalid combination of opcode and operands
+    87                                                  
+    88 00000065 80FC00                                  cmp AH, 0
+    89                                                  
+    90 00000068 751E                                    jne not_even
+    91                                                  
+    92                                                  ;for n even
+    93                                                  
+    94 0000006A BE00000000                              mov ESI, 0
+    95                                                  
+    96                                                  parse_string:
+    97                                                  
+    98 0000006F 8A86[23000000]                              mov AL, [string + ESI]
+    99                                                      
+   100 00000075 3C00                                        cmp AL, 0
+   101                                                      
+   102 00000077 0F8485000000                                je break_parse
+   103                                                      
+   104 0000007D 0414                                        add AL, 20
+   105                                                      
+   106 0000007F 8886[23000000]                              mov [string + ESI], AL
+   107                                                      
+   108 00000085 46                                          inc ESI
+   109                                                  
+   110 00000086 EBE7                                    jmp parse_string
+   111                                                  
+   112                                                  ;for n even
+   113                                                  
+   114                                                  not_even:
+   115                                                  
+   116                                                  ; for n odd
+   117                                                  
+   118 00000088 BE00000000                                  mov ESI, 0
+   119                                                  
+   120                                                      parse_string_1:
+   121                                                      
+   122 0000008D 8A86[23000000]                                  mov AL, [string + ESI]
+   123                                                          
+   124 00000093 3C00                                            cmp AL, 0
+   125                                                          
+   126 00000095 7470                                            je break
+   127                                                          
+   128 00000097 B361                                            mov BL, "a"
+   129                                                          
+   130 00000099 38D8                                            cmp AL, BL
+   131                                                          
+   132 0000009B 7563                                            jne not_vowel
+   133                                                          
+   134 0000009D B365                                            mov BL, "e"
+   135                                                          
+   136 0000009F 38D8                                            cmp AL, BL
+   137                                                          
+   138 000000A1 755D                                            jne not_vowel
+   139                                                          
+   140 000000A3 B369                                            mov BL, "i"
+   141                                                          
+   142 000000A5 38D8                                            cmp AL, BL
+   143                                                          
+   144 000000A7 7557                                            jne not_vowel
+   145                                                          
+   146 000000A9 B36F                                            mov BL, "o"
+   147                                                          
+   148 000000AB 38D8                                            cmp AL, BL
+   149                                                          
+   150 000000AD 7551                                            jne not_vowel
+   151                                                          
+   152 000000AF B375                                            mov BL, "u"
+   153                                                          
+   154 000000B1 38D8                                            cmp AL, BL
+   155                                                          
+   156 000000B3 754B                                            jne not_vowel
+   157                                                          
+   158                                                          
+   159 000000B5 89F7                                            mov EDI, ESI
+   160 000000B7 47                                              inc EDI
+   161                                                          
+   162                                                          loop_string:
+   163                                                          
+   164 000000B8 8A9F[23000000]                                      mov BL, [string + EDI]
+   165                                                              
+   166 000000BE 80FB00                                              cmp BL, 0
+   167                                                              
+   168                                                              je stop_parse
+   168          ******************       error: symbol `stop_parse' undefined
+   169                                                              
+   170 000000C1 47                                                  inc EDI
+   171                                                              
+   172 000000C2 889F[23000000]                                      mov [string + EDI], BL
+   173                                                              
+   174 000000C8 8A9F[23000000]                                      mov BL, [string + EDI]
+   175                                                              
+   176 000000CE 80FB00                                              cmp BL, 0
+   177                                                              
+   178                                                              je stop_parse
+   178          ******************       error: symbol `stop_parse' undefined
+   179                                                              
+   180 000000D1 47                                                  inc EDI
+   181                                                              
+   182 000000D2 889F[23000000]                                      mov [string + EDI], BL 
+   183                                                            
+   184                                                              
+   185 000000D8 EBDE                                            jmp loop_string
+   186                                                          
+   187                                                          stop_parse_string:
+   188                                                              
+   189 000000DA 8A9F[22000000]                                      mov BL, [string + EDI - 1]
+   190                                                              
+   191 000000E0 889F[23000000]                                      mov [string + EDI], BL
+   192 000000E6 C687[24000000]00                                    mov [string + EDI + 1], byte 0
+   193                                                              
+   194 000000ED B370                                                mov BL, "p"
+   195                                                              
+   196 000000EF 889E[23000000]                                      mov [string + ESI], BL
+   197 000000F5 46                                                  inc ESI
+   198 000000F6 8886[23000000]                                      mov [string + ESI], AL
+   199                                                          
+   200                                                          not_vowel:
+   201                                                          
+   202                                                      
+   203 000000FC EB8F                                        jmp parse_string_1
+   204                                                      
+   205                                                      break_parse:
+   206                                                  
+   207                                                  ; for n odd
+   208                                                  
+   209                                                  
+   210                                              
+   211                                              ;PROBLEMA IN SINE
+   212                                              
+   213                                              
+   214 000000FE E936FFFFFF                      jmp while
+   215                                          
+   216                                          break:
+   217                                          
+   218                                          ;CLOSE FILE
+   219                                          
+   220 00000103 FF35[17000000]                  push dword [file_descriptor]
+   221 00000109 FF15[00000000]                  call dword [fclose]
+   222 0000010F 83C404                          add esp, 4
+   223                                          
+   224                                          ;CLOSE FILE
+   225                                          
+   226 00000112 68[23000000]                    push dword string
+   227 00000117 68[20000000]                    push dword format_print_string
+   228 0000011C FF15[00000000]                  call [printf]
+   229 00000122 83C408                          add esp, 4 * 2
+   230                                          
+   231                                          final: 
+   232                                          
+   233                                          ; exit(0)
+   234 00000125 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   235 00000127 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

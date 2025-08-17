@@ -1,0 +1,106 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; Two character strings S1 and S2 are given. Obtain the string D by concatenating the elements found on odd positions in S2 and the elements found on even positions in S1.
+    14                                      
+    15 00000000 616263626566                s1 db 'a', 'b', 'c', 'b', 'e', 'f'
+    16                                      
+    17                                      l_s1 equ $ - s1
+    18                                      
+    19 00000006 3132333435                  s2 db '1', '2', '3', '4', '5'
+    20                                      
+    21                                      l_s2 equ $ - s2
+    22                                      
+    23 0000000B 00<rept>                    d times (l_s1 + l_s2 )/2  db 0
+    24                                      
+    25 00000010 0200                        two dw 2
+    26                                      
+    27                                  
+    28                                  ; our code starts here
+    29                                  segment code use32 class=code
+    30                                      start:
+    31                                          
+    32                                          ; First we concatenate the elements found on odd positions from s2 in d
+    33                                          
+    34 00000000 B905000000                      mov ECX, l_s2 ; ECX = l_s2, We move in the register ECX the length of the string s2
+    35                                          
+    36 00000005 BE00000000                      mov ESI, 0 ; we use ESI as an index, and we set it to the first element from the string
+    37                                          
+    38 0000000A BF00000000                      mov EDI, 0 ; we use EDI as index for the string d
+    39                                          
+    40 0000000F E323                            jecxz End_loop_1 ; we jump over the loop if l_s2 = 0
+    41                                          
+    42                                          repeat_loop_1:
+    43                                              
+    44 00000011 89F0                                mov EAX, ESI ; we make a copy of the index ESI
+    45                                              
+    46 00000013 BA00000000                          mov EDX, 0 ; we convert EAX to EDX:EAX
+    47                                              
+    48 00000018 66F735[10000000]                    div word [two] ; we devide EDX:EAX such that EDX have the reminder of the value from ESI / 2
+    49                                              
+    50 0000001F 83FA00                              cmp EDX, 0 ; we compare the result from EDX, which represents the remainder from ESI / 2, with 0
+    51                                                         ; such that if the index is even we jump over and skip that element from being added in d
+    52                                              
+    53 00000022 740D                                je if_even
+    54                                              
+    55 00000024 8A86[06000000]                      mov AL, [s2 + ESI] ; we move into AL the element from position ESI in s2
+    56                                              
+    57 0000002A 8887[0B000000]                      mov [d + EDI], AL ; then we concatenate into d the element from AL
+    58                                              
+    59 00000030 47                                  inc EDI ; we added an element into d so we will increase it afterwards
+    60                                              
+    61                                              if_even:
+    62                                              
+    63 00000031 46                                  inc ESI ; we increase ESI
+    64                                          
+    65 00000032 E2DD                            loop repeat_loop_1
+    66                                          
+    67                                          End_loop_1:
+    68                                          
+    69                                          ; Secondly we concatenate in "d" the elements from even positions from s1
+    70                                          
+    71 00000034 B906000000                      mov ECX, l_s1 ; ECX = l_s1, which is the length of s1
+    72                                          
+    73 00000039 BE00000000                      mov ESI, 0 ; reset the index to 0, because we will use it as an index for s1
+    74                                          
+    75 0000003E E323                            jecxz end_loop_2 ; jump over the loop if l_s1 = 0
+    76                                          
+    77                                          repeat_loop_2:
+    78                                          
+    79 00000040 89F0                                mov EAX, ESI ; we make a copy of the index ESI
+    80                                              
+    81 00000042 BA00000000                          mov EDX, 0 ; we convert EAX to EDX:EAX
+    82                                              
+    83 00000047 66F735[10000000]                    div word [two] ; we devide EDX:EAX such that EDX have the reminder of the value from ESI / 2
+    84                                              
+    85 0000004E 83FA00                              cmp EDX, 0 ; we compare the result from EDX, which represents the remainder from ESI / 2, with 0
+    86                                                         ; such that if the index is even we jump over and skip that element from being added in d
+    87                                              
+    88 00000051 750D                                jne if_odd
+    89                                              
+    90 00000053 8A86[00000000]                      mov AL, [s1 + ESI] ; we move into AL the element from position ESI in s2
+    91                                              
+    92 00000059 8887[0B000000]                      mov [d + EDI], AL ; then we concatenate into d the element from AL
+    93                                              
+    94 0000005F 47                                  inc EDI ; we added an element into d so we will increase it afterwards
+    95                                              
+    96                                              if_odd:
+    97                                              
+    98 00000060 46                                  inc ESI ; we increase ESI
+    99                                          
+   100 00000061 E2DD                            loop repeat_loop_2
+   101                                          
+   102                                          end_loop_2:
+   103                                          
+   104                                          ; exit(0)
+   105 00000063 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   106 00000065 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

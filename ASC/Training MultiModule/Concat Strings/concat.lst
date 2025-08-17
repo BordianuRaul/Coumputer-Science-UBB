@@ -1,0 +1,35 @@
+     1                                  bits 32
+     2                                  global concat
+     3                                  
+     4                                  segment code use32 class = code public
+     5                                  concat:
+     6                                      
+     7 00000000 8B742414                    mov ESI, [ESP + 20]
+     8 00000004 8B7C2404                    mov EDI, [ESP + 4]
+     9                                      
+    10                                      parse_s1:
+    11                                          
+    12 00000008 AC                              lodsb
+    13 00000009 B300                            mov BL, 0
+    14 0000000B 38D8                            cmp AL, BL
+    15 0000000D 7403                            je break_parse_s1
+    16 0000000F AA                              stosb
+    17                                      
+    18 00000010 EBF6                        jmp parse_s1
+    19                                      
+    20                                      break_parse_s1:
+    21                                      
+    22 00000012 8B74240C                    mov ESI, [ESP + 12]
+    23                                      
+    24                                      parse_s2:
+    25                                      
+    26 00000016 AC                              lodsb
+    27 00000017 B300                            mov BL,0
+    28 00000019 38C3                            cmp BL, AL
+    29 0000001B 7403                            je break_parse_s2
+    30 0000001D AA                              stosb
+    31 0000001E EBF6                        jmp parse_s2
+    32                                      
+    33                                      break_parse_s2:
+    34                                      
+    35 00000020 C3                          ret

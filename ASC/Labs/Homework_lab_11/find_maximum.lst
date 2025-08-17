@@ -1,0 +1,36 @@
+     1                                  bits 32
+     2                                  global find_maximum
+     3                                  
+     4                                  ;| return address |
+     5                                  ;|----------------|
+     6                                  ;| maximum value  |
+     7                                  ;|----------------|
+     8                                  ;| current value  |
+     9                                  ;|----------------|
+    10                                  
+    11                                  ;input Values , integers:
+    12                                  ;EDX holds the value of the current number in decimal
+    13                                  ;EBX holds the maximum value in decimal
+    14                                  
+    15                                  
+    16                                  ;the EDX,EAX,EBX registers will be modified
+    17                                  ;returns the value from EAX, which is 0 if the current number is less or equal to the maximum value else the current value
+    18                                  
+    19                                  find_maximum:
+    20                                  
+    21                                  
+    22 00000000 8B542408                    mov EDX,[ESP+8]
+    23 00000004 8B5C2404                    mov EBX,[ESP+4]
+    24 00000008 B800000000                  mov EAX,0
+    25                                      
+    26 0000000D 39DA                        cmp EDX,EBX
+    27                                      
+    28 0000000F 7602                        jbe not_a_bigger_value
+    29                                      
+    30                                      ;This number is a new max
+    31 00000011 89D0                        mov EAX,EDX
+    32                                      
+    33                                      not_a_bigger_value:
+    34                                      
+    35 00000013 C20400                      ret 4
+    36                                      

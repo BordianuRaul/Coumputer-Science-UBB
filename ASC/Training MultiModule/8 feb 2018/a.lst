@@ -1,0 +1,40 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  
+     4                                  extern exit, printf
+     5                                  import exit msvcrt.dll
+     6                                  import printf msvcrt.dll
+     7                                  
+     8                                  extern get_rank
+     9                                  
+    10                                  segment data use32 class = data public
+    11                                  
+    12 00000000 78A63412785634127D-         string dd 1234a678h, 12345678h, 1ac3b47dh, 0fedc9876h
+    12 00000009 B4C31A7698DCFE     
+    13                                      len_str equ $ - string
+    14 00000010 537472696E67206F66-         format db "String of byte ranks %s, sum = %d",0
+    14 00000019 20627974652072616E-
+    14 00000022 6B732025732C207375-
+    14 0000002B 6D203D20256400     
+    15 00000032 00<rept>                    ranks times len_str db 0
+    16 00000042 00000000                    sum dd 0
+    17                                  
+    18                                  
+    19                                  segment code use32 class = code public
+    20                                  start:
+    21                                  
+    22 00000000 68[00000000]                push dword string
+    23 00000005 6A10                        push dword len_str
+    24 00000007 68[32000000]                push dword ranks
+    25 0000000C 68[42000000]                push dword sum
+    26 00000011 E8(00000000)                call get_rank
+    27 00000016 83C410                      add esp, 4 * 4
+    28                                      
+    29 00000019 68[42000000]                push dword sum
+    30 0000001E 68[32000000]                push dword ranks
+    31 00000023 68[10000000]                push dword format
+    32 00000028 FF15[00000000]              call [printf]
+    33 0000002E 83C40C                      add esp, 4 * 3
+    34                                  
+    35 00000031 6A00                        push dword 0
+    36 00000033 FF15[00000000]              call [exit]

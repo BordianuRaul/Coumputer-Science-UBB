@@ -1,0 +1,105 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit, fopen, fread, fclose, printf               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll
+     9                                  import fopen msvcrt.dll
+    10                                  import fread msvcrt.dll
+    11                                  import fclose msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    12                                  import printf msvcrt.dll                          ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    13                                  
+    14                                  ; our data is declared here (the variables needed by our program)
+    15                                  segment data use32 class=data
+    16                                      ; A text file is given. Read the content of the file, count the number of vowels and display the result on the screen. The name of text file is defined in the data segment.
+    17                                      
+    18 00000000 00000000                    nr_vowels dd 0
+    19 00000004 4E72206F6620766F77-         format_print_result db "Nr of vowels = %d", 0
+    19 0000000D 656C73203D20256400 
+    20 00000016 646174612E74787400          filename db "data.txt",0
+    21 0000001F 7200                        acces_mod db "r",0
+    22 00000021 FFFFFFFF                    file_descriptor dd -1
+    23 00000025 00000000                    chars_read dd 0
+    24 00000029 00000000                    max_apperences dd 0
+    25                                      len equ 100
+    26 0000002D <res 00000064>              buffer resb len
+    27                                  
+    28                                  ; our code starts here
+    29                                  segment code use32 class=code
+    30                                      start:
+    31                                          ; 
+    32                                          
+    33                                          ;OPEM FILE
+    34 00000000 68[1F000000]                    push dword acces_mod
+    35 00000005 68[16000000]                    push dword filename
+    36 0000000A FF15[00000000]                  call [fopen]
+    37 00000010 83C408                          add ESP, 4 * 2
+    38                                          ;OPEN FILE
+    39                                          
+    40                                          ;Chech if the program created the file succesfully, EAX != 0
+    41 00000013 83F800                          cmp EAX, 0
+    42 00000016 7455                            je final
+    43                                          
+    44 00000018 A3[21000000]                    mov [file_descriptor], EAX ; we save in EAX, the file descriptor
+    45                                          
+    46                                          while:
+    47                                              ;Reads in buffer the first 100, chars
+    48                                              
+    49 0000001D FF35[21000000]                      push dword [file_descriptor]
+    50 00000023 6A64                                push dword len
+    51 00000025 6A01                                push dword 1
+    52 00000027 68[2D000000]                        push dword buffer
+    53 0000002C FF15[00000000]                      call [fread]
+    54 00000032 83C410                              add ESP, 4 * 4
+    55                                              
+    56                                              ;Reads in buffer the first 100, chars
+    57                                              
+    58                                              ;In EAX we have the number of chars read
+    59 00000035 83F864                              cmp EAX, 100
+    60                                              
+    61 00000038 740C                                je procces_data
+    62                                              
+    63 0000003A 83F800                              cmp EAX, 0
+    64                                              
+    65 0000003D 741F                                je cleanup
+    66                                                   
+    67 0000003F C680[2E000000]00                    mov [buffer + EAX + 1], byte 0
+    68                                              
+    69                                              procces_data:
+    70                                              
+    71 00000046 A3[25000000]                        mov [chars_read], EAX
+    72                                              
+    73                                              ;Instruction for data procces here
+    74                                              
+    75 0000004B BE00000000                          mov ESI, 0
+    76                                              while_buffer:
+    77 00000050 8A86[2D000000]                          mov AL, [buffer + ESI]
+    78                                                  
+    79 00000056 3C00                                    cmp AL, byte 0
+    80 00000058 7402                                    je break
+    81                                                  
+    82 0000005A EBF4                                jmp while_buffer
+    83                                              
+    84                                              break:
+    85                                             
+    86                                          
+    87 0000005C EBBF                            jmp while
+    88                                          
+    89                                          cleanup:
+    90                                          ;Close file
+    91                                          
+    92 0000005E FF35[21000000]                  push dword [file_descriptor]
+    93 00000064 FF15[00000000]                  call [fclose]
+    94 0000006A 83C404                          add ESP, 4
+    95                                         
+    96                                          
+    97                                          ;Close file
+    98                                          
+    99                                          
+   100                                          final:
+   101                                          
+   102                                          ; exit(0)
+   103 0000006D 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   104 0000006F FF15[00000000]                  call    [exit]       ; call exit to terminate the program

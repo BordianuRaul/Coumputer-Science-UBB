@@ -1,0 +1,6 @@
+cd "change directory"
+nasm -fobj main.asm
+nasm -fobj "module_name".asm
+alink main.obj "module_name".obj -oPE -subsys console -entry start
+
+main.exe ; execute main

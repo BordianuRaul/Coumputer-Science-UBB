@@ -1,0 +1,61 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      
+    14 00000000 08                          a db 8
+    15 00000001 04                          b db 4
+    16 00000002 02                          c db 2
+    17                                      
+    18                                  
+    19                                  ; our code starts here
+    20                                  segment code use32 class=code
+    21                                      start:
+    22                                          ;EX 16: (a+b)/2 + (10-a/c)+b/4
+    23                                      
+    24 00000000 A0[00000000]                   mov AL, [a] ; AL = a = 8
+    25                                         
+    26 00000005 0205[01000000]                 add AL, [b] ; AL = a + b = 8 + 4 = 12
+    27                                         
+    28 0000000B B400                           mov AH, 0 ; AX = a + b = 12
+    29                                         
+    30 0000000D B302                           mov BL, 2
+    31                                         
+    32 0000000F F6F3                           div BL ; AH = 0, AL = (a+b)/2 = 6
+    33                                         
+    34 00000011 88C3                           mov BL, AL ; BL = (a+b)/2 = 6
+    35                                         
+    36 00000013 A0[00000000]                   mov AL, [a] ; AL = a = 8
+    37                                         
+    38 00000018 B400                           mov AH, 0 ; AX = a = 8
+    39                                         
+    40 0000001A F635[02000000]                 div BYTE [c] ; AH = 0, AL = a/c = 4
+    41                                         
+    42 00000020 B10A                           mov CL, 10 ; CL = 10
+    43                                         
+    44 00000022 28C1                           sub CL, AL ; CL = 10-a/c = 10 - 4 = 6
+    45                                         
+    46 00000024 A0[01000000]                   mov AL, [b] ; AL = b = 4
+    47                                         
+    48 00000029 B400                           mov AH, 0 ; AX = b = 4
+    49                                         
+    50 0000002B B204                           mov DL, 4 ; DL = 4
+    51                                         
+    52 0000002D F6F2                           div DL ; AH = 0, AL = b/4 = 1
+    53                                         
+    54 0000002F 00C1                           add CL, AL ; CL = (10-a/c)+b/4 =  7
+    55                                         
+    56 00000031 00CB                           add BL, CL ; BL = (a+b)/2 + (10-a/c)+b/4 = 6 + 7 = 13
+    57                                                
+    58                                          
+    59                                          ; exit(0)
+    60 00000033 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    61 00000035 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

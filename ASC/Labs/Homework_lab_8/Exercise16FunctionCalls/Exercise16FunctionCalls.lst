@@ -1,0 +1,70 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                                            
+    11                                  import printf msvcrt.dll    
+    12                                  ; our data is declared here (the variables needed by our program)
+    13                                  segment data use32 class=data
+    14                                      
+    15 00000000 00000000                    a dd 0
+    16 00000004 613D00                      message_a db "a=",0
+    17 00000007 00000000                    b dd 0
+    18 0000000B 623D00                      message_b db "b=",0
+    19 0000000E 256400                      format db "%d",0
+    20                                      
+    21 00000011 02000000                    two dd 2
+    22                                      
+    23 00000015 612B622F32203D2025-         format_hexa db "a+b/2 = %x",0
+    23 0000001E 7800               
+    24                                  
+    25                                  ; our code starts here
+    26                                  segment code use32 class=code
+    27                                      start:
+    28                                          ; Read two numbers a and b (in base 10) from the keyboard. Calculate and print their arithmetic average in base 16
+    29                                          
+    30 00000000 68[04000000]                    push dword message_a
+    31                                          call [printf]
+    31          ******************       error: symbol `printf' undefined
+    32 00000005 83C404                          add ESP, 4 ; we print the message "a="
+    33                                          
+    34 00000008 68[00000000]                    push dword a
+    35 0000000D 68[0E000000]                    push format
+    36                                          call [scanf]
+    36          ******************       error: symbol `scanf' undefined
+    37 00000012 83C408                          add ESP, 4 * 2 ; we take the input for a
+    38                                          
+    39 00000015 68[0B000000]                    push dword message_b
+    40                                          call [printf]
+    40          ******************       error: symbol `printf' undefined
+    41 0000001A 83C408                          add ESP, 4 * 2 ; we print the message "b="
+    42                                          
+    43 0000001D 68[07000000]                    push dword b
+    44 00000022 68[0E000000]                    push format
+    45                                          call [scanf]
+    45          ******************       error: symbol `scanf' undefined
+    46 00000027 83C408                          add ESP, 4 * 2 ; we take the input for b
+    47                                          
+    48 0000002A A1[00000000]                    mov EAX, [a]
+    49 0000002F 8B1D[07000000]                  mov EBX, [b]
+    50                                          
+    51 00000035 01D8                            add EAX, EBX
+    52 00000037 BA00000000                      mov EDX, 0 ;we compute the arithmetic average for a and b 
+    53                                          
+    54 0000003C 8B1D[11000000]                  mov EBX, [two]
+    55 00000042 F7F3                            div EBX
+    56                                          
+    57 00000044 50                             push EAX
+    58 00000045 68[15000000]                   push format_hexa
+    59                                         call [printf]
+    59          ******************       error: symbol `printf' undefined
+    60 0000004A 83C408                         add ESP, 4 * 2 ;we print the result from EAX, in hexa format
+    61                                          
+    62                                         ; exit(0)
+    63 0000004D 6A00                           push    dword 0      ; push the parameter for exit onto the stack
+    64 0000004F FF15[00000000]                 call    [exit]       ; call exit to terminate the program

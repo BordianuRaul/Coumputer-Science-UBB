@@ -1,0 +1,84 @@
+     1                                  bits 32
+     2                                  global get_rank
+     3                                  
+     4                                  segment code use32 class=code public
+     5                                  
+     6                                  get_rank:
+     7                                      
+     8 00000000 00000000                    current dd 0
+     9 00000004 00                          max db 0
+    10 00000005 00                          rank db 0
+    11                                      
+    12 00000006 8B4C240C                    mov ECX, [esp + 12]
+    13 0000000A 8B742410                    mov esi, [esp + 16]
+    14 0000000E BF00000000                  mov edi, 0
+    15                                      parse_string:
+    16                                      
+    17 00000013 AD                              lodsd
+    18 00000014 A3[00000000]                    mov [current], EAX
+    19 00000019 668B15[00000000]                mov DX, [current]
+    20 00000020 66A1[02000000]                  mov AX, [current + 2]
+    21                                          
+    22 00000026 8835[04000000]                  mov [max], DH
+    23 0000002C B301                            mov bl, 1
+    24 0000002E 881D[05000000]                  mov [rank], bl
+    25                                          
+    26 00000034 3A15[04000000]                  cmp dl, [max]
+    27 0000003A 730E                            jae not_dl
+    28                                          
+    29 0000003C 8815[04000000]                  mov [max],dl
+    30 00000042 B302                            mov bl, 2
+    31 00000044 881D[05000000]                  mov [rank],bl
+    32                                          
+    33                                          not_dl:
+    34                                          
+    35 0000004A 3A25[04000000]                  cmp ah, [max]
+    36 00000050 730E                            jae not_ah
+    37                                          
+    38 00000052 8825[04000000]                  mov [max], ah
+    39 00000058 B303                            mov bl, 3
+    40 0000005A 881D[05000000]                  mov [rank], bl
+    41                                          
+    42                                          not_ah:
+    43                                          
+    44 00000060 3805[04000000]                  cmp [max], al
+    45 00000066 730D                            jae not_al
+    46                                          
+    47 00000068 A2[04000000]                    mov [max], AL
+    48 0000006D B304                            mov bl, 4
+    49 0000006F 881D[05000000]                  mov [rank], bl
+    50                                          
+    51                                          not_al:
+    52                                          
+    53 00000075 8A1D[05000000]                  mov bl, [rank]
+    54 0000007B 8B442408                        mov EAX,[ESP + 8]
+    55 0000007F 881C38                          mov [EAX + EDI], bl
+    56                                          
+    57 00000082 8B442404                        mov eax, [esp + 4]
+    58 00000086 B300                            mov bl,0
+    59 00000088 B700                            mov bh,0
+    60 0000008A 666A00                          push word 0
+    61 0000008D 5B                              pop EBX
+    62                                          
+    63 0000008E 01D8                            add EAX, EBX
+    64 00000090 89442404                        mov [esp + 4], eax
+    65 00000094 47                              inc edi
+    66 00000095 49                              dec ecx
+    67                                          
+    68 00000096 E978FFFFFF                  jmp parse_string
+    69                                          
+    70 0000009B C3                          ret
+    71                                          
+    72                                          
+    73                                          
+    74                                          
+    75                                          
+    76                                          
+    77                                          
+    78                                          
+    79                                          
+    80                                          
+    81                                          
+    82                                          
+    83                                          
+    84                                          

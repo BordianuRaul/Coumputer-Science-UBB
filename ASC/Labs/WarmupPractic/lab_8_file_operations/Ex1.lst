@@ -1,0 +1,178 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit, fopen, fread, fclose, printf               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll
+     9                                  import fopen msvcrt.dll
+    10                                  import fread msvcrt.dll
+    11                                  import fclose msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+    12                                  import printf msvcrt.dll                          ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    13                                  
+    14                                  ; our data is declared here (the variables needed by our program)
+    15                                  segment data use32 class=data
+    16                                      ; A text file is given. Read the content of the file, count the number of vowels and display the result on the screen. The name of text file is defined in the data segment.
+    17                                      
+    18 00000000 00000000                    nr_vowels dd 0
+    19 00000004 4E72206F6620766F77-         format_print_result db "Nr of vowels = %d", 0
+    19 0000000D 656C73203D20256400 
+    20 00000016 646174612E74787400          filename db "data.txt",0
+    21 0000001F 7200                        acces_mod db "r",0
+    22 00000021 FFFFFFFF                    file_descriptor dd -1
+    23 00000025 00000000                    chars_read dd 0
+    24                                      len equ 100
+    25 00000029 <res 00000064>              buffer resb len
+    26                                  
+    27                                  ; our code starts here
+    28                                  segment code use32 class=code
+    29                                      start:
+    30                                          ; 
+    31                                          
+    32                                          ;OPEM FILE
+    33 00000000 68[1F000000]                    push dword acces_mod
+    34 00000005 68[16000000]                    push dword filename
+    35 0000000A FF15[00000000]                  call [fopen]
+    36 00000010 83C408                          add ESP, 4 * 2
+    37                                          ;OPEN FILE
+    38                                          
+    39                                          ;Chech if the program created the file succesfully, EAX != 0
+    40 00000013 83F800                          cmp EAX, 0
+    41 00000016 0F849D000000                    je final
+    42                                          
+    43 0000001C A3[21000000]                    mov [file_descriptor], EAX ; we save in EAX, the file descriptor
+    44                                          
+    45                                  
+    46 00000021 BA00000000                      mov EDX, 0
+    47                                          
+    48                                  
+    49                                          
+    50                                          while:
+    51                                              ;Reads in buffer the first 100, chars
+    52                                              
+    53 00000026 BE00000000                          mov ESI, 0
+    54                                              
+    55 0000002B 60                                  PUSHAD
+    56                                              
+    57 0000002C FF35[21000000]                      push dword [file_descriptor]
+    58 00000032 6A64                                push dword len
+    59 00000034 6A01                                push dword 1
+    60 00000036 68[29000000]                        push dword buffer
+    61 0000003B FF15[00000000]                      call [fread]
+    62 00000041 83C410                              add ESP, 4 * 4
+    63                                              
+    64                                              ;Reads in buffer the first 100, chars
+    65                                              
+    66                                              ;In EAX we have the number of chars read
+    67 00000044 83F864                              cmp EAX, 100
+    68                                              
+    69 00000047 740C                                je procces_data
+    70                                              
+    71 00000049 83F800                              cmp EAX, 0
+    72                                              
+    73 0000004C 744C                                je cleanup
+    74                                                   
+    75 0000004E C680[2A000000]00                    mov [buffer + EAX + 1], byte 0
+    76                                              
+    77                                              procces_data:
+    78                                              
+    79 00000055 A3[25000000]                        mov [chars_read], EAX
+    80                                              
+    81                                              ;Instruction for data procces here
+    82                                              
+    83 0000005A 8B0D[25000000]                      mov ECX, [chars_read]
+    84                                              
+    85 00000060 8B15[00000000]                      mov EDX, [nr_vowels]
+    86                                              
+    87                                              loop_ecx:
+    88                                              
+    89 00000066 8A86[29000000]                          mov AL, [buffer + ESI]
+    90                                                  
+    91 0000006C B361                                    mov BL, "a"
+    92                                                  
+    93 0000006E 38D8                                    cmp AL, BL
+    94                                                  
+    95 00000070 7501                                    jne not_a
+    96                                                  
+    97 00000072 42                                      inc EDX
+    98                                                  
+    99                                                  not_a:
+   100                                                  
+   101 00000073 B365                                    mov BL, "e"
+   102                                                  
+   103 00000075 38D8                                    cmp AL, BL
+   104                                                  
+   105 00000077 7501                                    jne not_e
+   106                                                  
+   107 00000079 42                                      inc EDX
+   108                                                  
+   109                                                  not_e:
+   110                                                  
+   111 0000007A B369                                    mov BL, "i"
+   112                                                  
+   113 0000007C 38D8                                    cmp AL, BL
+   114                                                  
+   115 0000007E 7501                                    jne not_i
+   116                                                  
+   117 00000080 42                                      inc EDX
+   118                                                  
+   119                                                  not_i:
+   120                                                  
+   121 00000081 B36F                                    mov BL, "o"
+   122                                                  
+   123 00000083 38D8                                    cmp AL, BL
+   124                                                  
+   125 00000085 7501                                    jne not_o
+   126                                                  
+   127 00000087 42                                      inc EDX
+   128                                                  
+   129                                                  not_o:
+   130                                                  
+   131 00000088 B375                                    mov BL, "u"
+   132                                                  
+   133 0000008A 38D8                                    cmp AL, BL
+   134                                                  
+   135 0000008C 7501                                    jne not_u
+   136                                                  
+   137 0000008E 42                                      inc EDX
+   138                                                  
+   139                                                  not_u:
+   140                                                  
+   141 0000008F 46                                      inc ESI
+   142                                              
+   143 00000090 E2D4                                loop loop_ecx
+   144                                              
+   145 00000092 8915[00000000]                      mov [nr_vowels], EDX
+   146                                              
+   147                                          
+   148 00000098 EB8C                            jmp while
+   149                                          
+   150                                          cleanup:
+   151                                          ;Close file
+   152                                          
+   153 0000009A FF35[21000000]                  push dword [file_descriptor]
+   154 000000A0 FF15[00000000]                  call [fclose]
+   155 000000A6 83C404                          add ESP, 4
+   156                                          
+   157 000000A9 61                              POPAD
+   158                                          
+   159                                          ;Close file
+   160                                          
+   161                                          ;Print result
+   162                                          
+   163                                          
+   164                                          
+   165 000000AA 52                              push dword EDX
+   166 000000AB 68[04000000]                    push dword format_print_result
+   167 000000B0 FF15[00000000]                  call [printf]
+   168 000000B6 83C408                          add ESP, 4 * 2
+   169                                     
+   170                                          ;Print result
+   171                                          
+   172                                          
+   173                                          final:
+   174                                          
+   175                                          ; exit(0)
+   176 000000B9 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   177 000000BB FF15[00000000]                  call    [exit]       ; call exit to terminate the program

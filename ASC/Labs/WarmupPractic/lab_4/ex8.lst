@@ -1,0 +1,58 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      
+    14 00000000 D1B3                        A dw 1011001111010001b
+    15 00000002 9115                        B dw 0001010110010001b
+    16 00000004 0000                        C dw 0
+    17                                  
+    18                                  ; our code starts here
+    19                                  segment code use32 class=code
+    20                                      start:
+    21                                          ; Given the words A and B, compute the doubleword C as follows:
+    22                                          ;the bits 0-2 of C have the value 0
+    23                                          ;the bits 3-5 of C have the value 1
+    24                                          ;the bits 6-9 of C are the same as the bits 11-14 of A
+    25                                          ;the bits 10-15 of C are the same as the bits 1-6 of B
+    26                                          ;the bits 16-31 of C have the value 1
+    27                                          
+    28 00000000 66A1[04000000]                  mov AX, [C]
+    29 00000006 668B15[06000000]                mov DX, [C + 2] 
+    30                                          
+    31                                          ;DX:AX = C
+    32                                          
+    33 0000000D 0C38                            or AL, 00111000b
+    34                                          
+    35 0000000F 668B1D[00000000]                mov BX, [A]
+    36                                          
+    37 00000016 66C1CB05                        ror BX, 5
+    38                                          
+    39 0000001A 6681E3C003                      and BX, 0000001111000000b
+    40                                          
+    41 0000001F 08D8                            or AL, BL
+    42 00000021 08FC                            or AH, BH
+    43                                          
+    44 00000023 668B1D[02000000]                mov BX, [B]
+    45                                          
+    46 0000002A 66C1CB07                        ror BX, 7
+    47 0000002E 6681E300FC                      and BX, 1111110000000000b
+    48                                          
+    49 00000033 6609D8                          or AX, BX
+    50                                          
+    51 00000036 6683CAFF                        or DX, 1111111111111111b
+    52                                          
+    53 0000003A 668915[04000000]                mov [C], DX
+    54 00000041 66A3[06000000]                  mov [C + 2], AX
+    55                                          
+    56                                          ; exit(0)
+    57 00000047 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    58 00000049 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

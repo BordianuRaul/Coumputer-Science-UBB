@@ -1,0 +1,115 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                                            ; msvcrt.dll contains exit, printf and all the other important C-runtime specific functions
+    10                                  
+    11                                  ; our data is declared here (the variables needed by our program)
+    12                                  segment data use32 class=data
+    13                                      ; a,c- word
+    14                                      ; b,d- byte;
+    15                                      ; e- doubleword
+    16                                      ; x- qword
+    17                                      
+    18 00000000 18FCFFFFFFFFFFFF             x dq -1000
+    19 00000008 CEFF                         a dw -50
+    20 0000000A 0A                           b db 10
+    21 0000000B E7FF                         c dw -25
+    22 0000000D FB                           d db -5
+    23 0000000E F6FFFFFF                     e dd -10
+    24                                      
+    25                                  
+    26                                  ; our code starts here
+    27                                  segment code use32 class=code
+    28                                      start:
+    29                                          ; x/2+100*(a+b)-3/(c+d)+e*e (Signed)
+    30                                           
+    31                                          ; x / 2
+    32                                  
+    33 00000000 A1[00000000]                    mov EAX, [x + 0]
+    34 00000005 8B15[04000000]                  mov EDX, [x + 4]
+    35                                          
+    36 0000000B B902000000                      mov ECX, 2
+    37                                          
+    38 00000010 F7F9                            idiv ECX ; EAX = EDX:EAX / ECX = -1000 / 2 = -500 = x/2
+    39                                                   ; EDX = EDX:EAX % ECX = -1000 % 2 = 0
+    40                                                   
+    41 00000012 89C1                            mov ECX, EAX ; ECX = x/2 = -500
+    42                                          
+    43                                          ; 100*(a+b)
+    44                                          
+    45 00000014 668B1D[08000000]                mov BX, [a] ; BX = a = -50
+    46                                          
+    47 0000001B A0[0A000000]                    mov AL, [b] ; AL = b = 10
+    48 00000020 6698                            cbw ; AX = b = 10
+    49                                          
+    50 00000022 6601D8                          add AX, BX ; AX = b + a = 10 - 50 = -40
+    51                                          
+    52 00000025 66BB6400                        mov BX, 100 ; BX = 100
+    53                                          
+    54 00000029 66F7EB                          imul BX ; DX:AX = AX * BX = 100*(a+b) = -40 * 100 = -4000
+    55                                          
+    56                                          ;x/2 + 100*(a+b)
+    57                                          
+    58 0000002C 6652                            push DX
+    59                                          
+    60 0000002E 6650                            push AX
+    61                                          
+    62 00000030 58                              pop EAX; EAX = DX:AX = -4000
+    63                                          
+    64 00000031 01C1                            add ECX, EAX ; ECX = x/2 + 100*(a+b) = -4500
+    65                                          
+    66                                          ;3/(c+d)
+    67                                          
+    68 00000033 668B1D[0B000000]                mov BX, [c] ; BX = c = -25
+    69                                          
+    70 0000003A A0[0D000000]                    mov AL, [d] ; AL = d = -5
+    71                                          
+    72 0000003F 6698                            cbw ; AX = D = - 5
+    73                                          
+    74 00000041 6601C3                          ADD BX, AX ; AX = c + d = -25 + (-5) = -30
+    75                                          
+    76 00000044 66B80300                        mov AX, 3 ; AX = 3
+    77                                          
+    78 00000048 6699                            cwd ;  DX:AX = 3
+    79                                          
+    80 0000004A 66F7FB                          idiv BX ; AX = DX:AX / BX = 3 / -30 = 0 = 3/(c+d)
+    81                                                 ; DX = DX:AX % BX = 3 % -30 = 3
+    82                                                 
+    83                                          ; x/2 + 100*(a+b) - 3/(c+d)
+    84                                          
+    85 0000004D 98                              cwde ; EAX = 3/(c+d) = 0
+    86                                          
+    87 0000004E 29C1                            sub ECX, EAX ; ECX = EAX - ECX = -4500 = x/2 + 100*(a+b) - 3/(c+d)
+    88                                          
+    89                                          ; e*e
+    90                                          
+    91 00000050 A1[0E000000]                    mov EAX, [e] ; EAX = e = -10
+    92                                          
+    93 00000055 F7E8                            imul EAX ; EDX:EAX = EAX * EAX = -10 * -10 = 100
+    94                                          
+    95                                          ;x/2 + 100*(a+b) - 3/(c+d) + e*e
+    96                                          
+    97 00000057 50                              push EAX
+    98                                          
+    99 00000058 52                              push EDX
+   100                                          
+   101 00000059 89C8                            mov EAX, ECX ; ECX = EAX = x/2 + 100*(a+b) - 3/(c+d) = -4500
+   102                                          
+   103 0000005B 99                              cdq ; EDX:EAX = x/2 + 100*(a+b) - 3/(c+d) = -4500
+   104                                          
+   105 0000005C 59                              pop ECX ; ECX = EDX(stiva)
+   106                                          
+   107 0000005D 5B                              pop EBX ; EBX = EAX(stiva)
+   108                                          
+   109 0000005E 01D8                            add EAX, EBX ; EAX = EAX + EBX
+   110 00000060 01CA                            add EDX, ECX ; EDX = EDX + ECX
+   111                                                       ; EDX:EAX = EDX:ECX + ECX:EBX = x/2 + 100*(a+b) - 3/(c+d) + e*e = -4400  
+   112                                         
+   113                                          ; exit(0)
+   114 00000062 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   115 00000064 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

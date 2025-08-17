@@ -1,0 +1,168 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit, printf, scanf            
+     8                                  import exit msvcrt.dll     
+     9                                  import printf msvcrt.dll     ; indicating to the assembler that the printf fct can be found in the msvcrt.dll library
+    10                                  import scanf msvcrt.dll
+    11                                  
+    12                                  ; our data is declared here (the variables needed by our program)
+    13                                  segment data use32 class=data
+    14                                      ; ...
+    15                                      
+    16 00000000 61636565                    s1 db 'a','c','e','e'
+    17                                      
+    18                                      len_s1 equ $ - s1
+    19                                      
+    20 00000004 62647A                      s2 db 'b','d','z'
+    21                                      
+    22                                      len_s2 equ $ - s2
+    23                                      
+    24 00000007 00<rept>                    result times len_s1 + len_s2  db 0
+    25                                      
+    26                                      len_result equ len_s1 + len_s2
+    27                                      
+    28 0000000E 54686520737472696E-         format db "The string: %s", 0
+    28 00000017 673A20257300       
+    29                                      
+    30                                      
+    31                                      
+    32                                  ; our code starts here
+    33                                  segment code use32 class=code
+    34                                      start:
+    35                                          ; Being given two alphabetical ordered strings of characters, s1 and s2, build using merge sort the ordered string of bytes that contain all characters from s1 and s2.
+    36                                          
+    37                                          
+    38 00000000 BE[00000000]                    mov ESI, s1 ; index for s1
+    39                                          
+    40 00000005 BF00000000                      mov EDI, 0 ; index for s2
+    41                                          
+    42 0000000A BA00000000                      mov EDX, 0 ; index for result
+    43                                          
+    44 0000000F 66BB0400                        mov BX, len_s1
+    45                                          
+    46 00000013 66B90300                        mov CX, len_s2
+    47                                          
+    48 00000017 AC                              lodsb ; AL = first element from s1
+    49                                          
+    50                                          ; In the first step we will go trough s1 and s2 simultaneously, and compare elements from each string, the lower one
+    51                                          ; will be added in the "final" string and the bigger one will be saved for the next comparison
+    52                                          
+    53                                          while:
+    54                                              
+    55 00000018 3A87[04000000]                      cmp AL, [s2 + EDI] ; compare the elements from s1 and s2
+    56                                              
+    57 0000001E 7C1C                                JL if_less ;if the element from s1 is lower, we will jump over
+    58                                              
+    59 00000020 B400                                    mov AH, 0 ; we conver AL, to AX so we can push it on the stack
+    60                                                  
+    61 00000022 6650                                    push AX ; we save the element from s1 on the stack such that we can use the register AX as an auxiliary for the
+    62                                                          ;element from s2
+    63                                                  
+    64 00000024 8A87[04000000]                          mov AL, [s2 + EDI] ; we move the element from s2 in AL
+    65                                                  
+    66 0000002A 8882[07000000]                          mov [result + EDX], AL ; we add in the string "result" an element from s2
+    67                                                  
+    68 00000030 42                                      inc EDX ; we increment EDX
+    69                                                  
+    70 00000031 47                                      inc EDI ; we increment EDI, so we move to the next element from s2
+    71                                                  
+    72 00000032 6649                                    dec CX ; we decrement CX
+    73                                                  
+    74 00000034 6658                                    pop AX ; we save in AX the element from s1 which we pushed on the stack so we can use it at the next comparison
+    75                                              
+    76 00000036 6683F900                                cmp CX, 0 ; if we added in result all the string s2, then we exit the while
+    77                                                  
+    78 0000003A 7412                                    je exit_while
+    79                                              
+    80                                              if_less:
+    81                                                  
+    82 0000003C 8882[07000000]                          mov [result + EDX], AL ; we add into "result" the element from s1
+    83                                                  
+    84 00000042 42                                      inc EDX ; we increment EDX
+    85                                                  
+    86 00000043 664B                                    dec BX ; we decrement BX
+    87                                                  
+    88 00000045 6683FB00                                cmp BX, 0 ; if we added in result all the string s1, then we exit the while
+    89                                                  
+    90 00000049 7403                                    je exit_while
+    91                                                  
+    92 0000004B AC                                      lodsb ; AL takes the next element from s1
+    93                                                  
+    94                                          
+    95 0000004C EBCA                            jmp while
+    96                                          
+    97                                          
+    98                                          exit_while:
+    99                                          
+   100                                          
+   101 0000004E 6683FB00                        cmp BX, 0 ; if we added all the elements from s1, we will skip the next while
+   102                                          
+   103 00000052 7412                            je skip_s1
+   104                                          
+   105                                                  
+   106                                              continue_while_s1: ; if s1 still has elements which were not added in "result" then they must be the most bigger ones
+   107                                                                 ; so we will add in "result" all the elements left in s1
+   108                                                  
+   109 00000054 8882[07000000]                          mov [result + EDX], AL ; we add in the string "result" an element from s1
+   110                                                      
+   111 0000005A 42                                      inc EDX ; we increment EDX
+   112                                                  
+   113 0000005B 664B                                    dec BX ; we decrement BX
+   114                                                  
+   115 0000005D 6683FB00                                cmp BX, 0
+   116                                                  
+   117 00000061 7421                                    je final
+   118                                                  
+   119 00000063 AC                                      lodsb ; AL = next element from s2
+   120                                                  
+   121                                              
+   122 00000064 EBEE                                jmp continue_while_s1
+   123                                          
+   124                                          
+   125                                          skip_s1:
+   126                                          
+   127 00000066 6683F900                        cmp CX, 0 ; if we added all the elements from s1, we will skip the next while
+   128                                          
+   129 0000006A 7418                            je skip_s2
+   130                                          
+   131                                              continue_while_s2: ; if s2 still has elements which were not added in "result" then they must be the most bigger ones
+   132                                                                 ; so we will add in "result" all the elements left in s2
+   133                                                  
+   134 0000006C 8A87[04000000]                          mov AL, [s2 + EDI]
+   135                                                  
+   136 00000072 8882[07000000]                          mov [result + EDX], AL
+   137                                                  
+   138 00000078 42                                      inc EDX
+   139                                                  
+   140 00000079 47                                      inc EDI
+   141                                                  
+   142 0000007A 6649                                    dec CX
+   143                                              
+   144 0000007C 6683F900                                cmp CX, 0
+   145                                                  
+   146 00000080 7402                                    je final
+   147                                              
+   148 00000082 EBE8                                jmp continue_while_s2
+   149                                          
+   150                                          skip_s2:
+   151                                          
+   152                                          
+   153                                          final:
+   154                                          
+   155 00000084 68[07000000]                    push result
+   156                                          
+   157 00000089 68[0E000000]                    push format
+   158                                          
+   159 0000008E FF15[00000000]                  call [printf]
+   160                                          
+   161 00000094 83C408                          add esp, 4 * 2
+   162                                          
+   163                                          
+   164                                          
+   165                                          ; exit(0)
+   166 00000097 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   167 00000099 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

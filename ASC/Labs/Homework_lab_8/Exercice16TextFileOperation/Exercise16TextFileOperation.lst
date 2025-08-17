@@ -1,0 +1,155 @@
+     1                                  
+     2                                  bits 32
+     3                                  
+     4                                  global start
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit, fopen, fread, fclose, printf
+     8                                  import exit msvcrt.dll
+     9                                  import fopen msvcrt.dll
+    10                                  import fread msvcrt.dll
+    11                                  import fclose msvcrt.dll
+    12                                  import printf msvcrt.dll
+    13                                  
+    14                                  ; our data is declared here (the variables needed by our program)
+    15                                  segment data use32 class=data
+    16                                      
+    17 00000000 546865206E756D6265-         format db "The number of y's = %d and of z's = %d",0
+    17 00000009 72206F662079277320-
+    17 00000012 3D20256420616E6420-
+    17 0000001B 6F66207A2773203D20-
+    17 00000024 256400             
+    18 00000027 646174612E74787400          file_name db "data.txt", 0   
+    19 00000030 7200                        access_mode db "r", 0       
+    20                                                                  
+    21 00000032 FFFFFFFF                    file_descriptor dd -1       
+    22                                      len equ 100                 
+    23 00000036 00<rept>                    text times len db 0         
+    24                                      
+    25 0000009A 00000000                    nr_of_char_read dd 0
+    26                                      
+    27 0000009E 00000000                    nr_of_y dd 0
+    28 000000A2 00000000                    nr_of_z dd 0
+    29                                      
+    30                                      
+    31                                      
+    32                                  
+    33                                  ; our code starts here
+    34                                  segment code use32 class=code
+    35                                  
+    36                                      start:
+    37                                      
+    38                                          ; call fopen() to create the file
+    39                                          ; fopen() will return a file descriptor in the EAX or 0 in case of error
+    40                                          ; eax = fopen(file_name, access_mode)
+    41 00000000 68[30000000]                    push dword access_mode     
+    42 00000005 68[27000000]                    push dword file_name
+    43 0000000A FF15[00000000]                  call [fopen]
+    44 00000010 83C408                          add esp, 4*2                ; clean-up the stack
+    45                                  
+    46 00000013 A3[32000000]                    mov [file_descriptor], eax  ; store the file descriptor returned by fopen
+    47                                  
+    48                                          ; check if fopen() has successfully opened the file (EAX != 0)
+    49 00000018 83F800                          cmp eax, 0
+    50 0000001B 0F8484000000                    je final
+    51                                          
+    52 00000021 BB00000000                      mov EBX, 0; we will store the number of chars in EBX
+    53                                  
+    54                                          read_from_file:
+    55                                          
+    56 00000026 FF35[32000000]                      push dword [file_descriptor]
+    57 0000002C 6A64                                push dword len
+    58 0000002E 6A01                                push dword 1
+    59 00000030 68[36000000]                        push dword text        
+    60 00000035 FF15[00000000]                      call [fread]
+    61 0000003B 83C410                              add esp, 4*4
+    62                                              
+    63 0000003E 83F864                              cmp eax, 100
+    64                                              
+    65 00000041 740C                                je dont_add_0
+    66                                              
+    67                                              
+    68 00000043 83F800                                  cmp eax, 0
+    69                                                  
+    70 00000046 745D                                    je final
+    71                                                  
+    72 00000048 C680[36000000]00                        mov [text + eax], byte 0
+    73                                              
+    74                                              dont_add_0:
+    75                                              
+    76 0000004F A3[9A000000]                        mov [nr_of_char_read], EAX ; we save in EBX the length of the string read from the file
+    77                                              
+    78 00000054 8B0D[9A000000]                      mov ECX, [nr_of_char_read] ; we move to ECX, the length of "text"
+    79                                      
+    80 0000005A BE00000000                          mov ESI, 0 ; we use ESI, as index for parsing the string "text"
+    81                                              
+    82 0000005F B800000000                          mov EAX, 0 ; we use EAX for counting the letters "y"
+    83                                              
+    84 00000064 BB00000000                          mov EBX, 0 ; we use EBX, for counting the letters "z"
+    85                                              
+    86                                              repeat_loop:
+    87                                                  
+    88 00000069 8A96[36000000]                          mov DL, [text + ESI]
+    89                                                  
+    90 0000006F 80FA79                                  cmp DL, "y"
+    91                                                  
+    92 00000072 7407                                    je y_found ; if the character is an "y" increase EAX
+    93                                                  
+    94 00000074 80FA7A                                  cmp DL, "z"
+    95                                                  
+    96 00000077 7405                                    je z_found ; if the character is an "z" increase EBX
+    97                                                  
+    98 00000079 EB04                                    jmp no_y_or_z_found ; if the character was not an "y" or an "z" don't increase anything
+    99                                                  
+   100                                                  y_found:
+   101                                                  
+   102 0000007B 40                                          inc EAX
+   103                                                      
+   104 0000007C EB01                                        jmp no_y_or_z_found ;
+   105                                                      
+   106                                                  z_found:
+   107                                                      
+   108 0000007E 43                                          inc EBX
+   109                                                      
+   110                                                  no_y_or_z_found: 
+   111                                                  
+   112 0000007F 46                                      inc ESI ; we increase the index for "text"
+   113                                          
+   114 00000080 E2E7                                    loop repeat_loop
+   115                                                  
+   116 00000082 BA00000000                              mov EDX, 0
+   117                                                  
+   118 00000087 8B15[9E000000]                          mov EDX, [nr_of_y]
+   119                                                  
+   120 0000008D 01C2                                    add EDX, EAX
+   121                                                  
+   122 0000008F 8915[9E000000]                          mov [nr_of_y], EDX ; we put in number of y's into "nr_of_y"
+   123                                                  
+   124 00000095 8B15[A2000000]                          mov EDX, [nr_of_z]
+   125                                                  
+   126 0000009B 01DA                                    add EDX, EBX
+   127                                                  
+   128 0000009D 8915[A2000000]                          mov [nr_of_z], EDX
+   129                                              
+   130 000000A3 EB81                            jmp read_from_file
+   131                                      
+   132                                      final:
+   133                                      
+   134                                      ; call fclose() to close the file
+   135                                      ; fclose(file_descriptor)
+   136 000000A5 FF35[32000000]              push dword [file_descriptor]
+   137 000000AB FF15[00000000]              call [fclose]
+   138 000000B1 83C404                      add esp, 4
+   139                                  
+   140                                      
+   141                                      ; format db "The number of y's = %d and of z's = %d",0
+   142 000000B4 FF35[A2000000]              push dword [nr_of_z]
+   143 000000BA FF35[9E000000]              push dword [nr_of_y]
+   144 000000C0 68[00000000]                push dword format
+   145 000000C5 FF15[00000000]              call [printf]
+   146 000000CB 83C40C                      add ESP, 4 * 3
+   147                                      
+   148                                  
+   149                                      ; exit(0)
+   150 000000CE 6A00                        push dword 0
+   151 000000D0 FF15[00000000]              call [exit]

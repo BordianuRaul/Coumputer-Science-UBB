@@ -1,0 +1,283 @@
+     1                                  bits 32 ; assembling for the 32 bits architecture
+     2                                  
+     3                                  ; declare the EntryPoint (a label defining the very first instruction of the program)
+     4                                  global start        
+     5                                  
+     6                                  ; declare external functions needed by our program
+     7                                  extern exit, printf, scanf, fprintf, fopen, fclose               ; tell nasm that exit exists even if we won't be defining it
+     8                                  import exit msvcrt.dll    ; exit is a function that ends the calling process. It is defined in msvcrt.dll
+     9                                  import printf msvcrt.dll                          ; msvcrt.dll contains exit, printf and all the other important C-runtime specific     in
+    10                                  import scanf msvcrt.dll
+    11                                  import fprintf msvcrt.dll
+    12                                  import fclose msvcrt.dll
+    13                                  import fopen msvcrt.dll
+    14                                  
+    15                                  ; our data is declared here (the variables needed by our program)
+    16                                  segment data use32 class=data
+    17                                      ; Read a 100 characters string from the keyboard. The string contains a hidden message.
+    18                                      ;The message was hidden by swapping the 2nd and 2nd to last letter and turning each letter in its ASCII code (in base 16).
+    19                                      ;Write in a file the original message in a file. The original message does not contain spaces or digits.
+    20                                      
+    21 00000000 00<rept>                    result times 100 db 0
+    22 00000064 6F75747075742E7478-         filename db "output.txt",0
+    22 0000006D 7400               
+    23 0000006F 257300                      format_fprint db "%s",0
+    24 00000072 FFFFFFFF                    file_descriptor dd -1
+    25 00000076 7700                        access_mode db "w",0
+    26                                      
+    27                                      
+    28 00000078 737472696E67203D20-         message_print db "string = ",0
+    28 00000081 00                 
+    29 00000082 257300                      format_read db "%s",0
+    30                                      
+    31 00000085 00000000                    nr_chars dd 0
+    32                                      
+    33                                      
+    34                                      len equ 100
+    35 00000089 <res 00000064>              string resb len
+    36                                  
+    37                                  
+    38                                  ; our code starts here
+    39                                  segment code use32 class=code
+    40                                      start:
+    41                                          ; 
+    42                                          
+    43 00000000 68[78000000]                    push dword message_print
+    44 00000005 FF15[00000000]                  call [printf]
+    45 0000000B 83C404                          add ESP, 4
+    46                                          
+    47 0000000E 68[89000000]                    push dword string
+    48 00000013 68[82000000]                    push dword format_read
+    49 00000018 FF15[00000000]                  call [scanf]
+    50 0000001E 83C408                          add esp, 4 * 2
+    51                                          
+    52                                          
+    53 00000021 B900000000                      mov ECX, 0
+    54 00000026 BE00000000                      mov ESI, 0
+    55 0000002B BF00000000                      mov EDI, 0
+    56                                          
+    57                                          get_nr_chars:
+    58                                          
+    59 00000030 8A86[89000000]                      mov AL, [string + ESI]
+    60                                              
+    61 00000036 3C00                                cmp AL, byte 0
+    62                                              
+    63 00000038 7404                                je break_get_nr_chars
+    64                                              
+    65 0000003A 41                                  inc ECX
+    66 0000003B 46                                  inc ESI
+    67                                          
+    68 0000003C EBF2                            jmp get_nr_chars
+    69                                          
+    70                                          break_get_nr_chars:
+    71                                          
+    72 0000003E 890D[85000000]                  mov [nr_chars], ECX
+    73                                          
+    74                                          ;SWAP 2nd and 2nd to last letter
+    75                                          
+    76                                          ;2, 3 cu n - 4, 2 <-> -4 3 <-> -3
+    77                                          
+    78 00000044 BE02000000                      mov ESI, 2
+    79                                          
+    80 00000049 8B3D[85000000]                  mov EDI, [nr_chars]
+    81 0000004F 83EF04                          sub EDI, 4
+    82                                          
+    83 00000052 8A86[89000000]                  mov AL, [string + ESI]
+    84 00000058 8A9F[89000000]                  mov BL, [string + EDI]
+    85                                          
+    86 0000005E 889E[89000000]                  mov [string + ESI], BL
+    87 00000064 8887[89000000]                  mov [string + EDI], AL
+    88                                          
+    89 0000006A 46                              inc ESI
+    90 0000006B 47                              inc EDI
+    91                                          
+    92                                          
+    93 0000006C 8A86[89000000]                  mov AL, [string + ESI]
+    94 00000072 8A9F[89000000]                  mov BL, [string + EDI]
+    95                                          
+    96 00000078 889E[89000000]                  mov [string + ESI], BL
+    97 0000007E 8887[89000000]                  mov [string + EDI], AL
+    98                                          
+    99                                          
+   100                                          ;SWAP 2nd and 2nd to last letter
+   101                                          
+   102                                          ;convert hexa to ascii
+   103                                          
+   104 00000084 BE00000000                      mov ESI, 0
+   105 00000089 BA00000000                      mov EDX, 0
+   106                                          
+   107                                          convert_hexa_while:
+   108                                              
+   109 0000008E 8A86[89000000]                      mov AL, [string + ESI]
+   110                                              
+   111 00000094 3C30                                cmp AL, "0"
+   112                                              
+   113 00000096 7502                                jne dont_move_0
+   114                                              
+   115 00000098 B200                                mov DL, 0
+   116                                              
+   117                                              dont_move_0:
+   118                                              
+   119 0000009A 3C31                                cmp AL, "1"
+   120                                              
+   121 0000009C 7502                                jne dont_move_1
+   122                                              
+   123 0000009E B201                                mov DL, 1
+   124                                              
+   125                                              dont_move_1:
+   126                                              
+   127 000000A0 3C32                                cmp AL, "2"
+   128                                              
+   129 000000A2 7502                                jne dont_move_2
+   130                                              
+   131 000000A4 B202                                mov DL, 2
+   132                                              
+   133                                              dont_move_2:
+   134                                              
+   135 000000A6 3C33                                cmp AL, "3"
+   136                                              
+   137 000000A8 7502                                jne dont_move_3
+   138                                              
+   139 000000AA B203                                mov DL, 3
+   140                                              
+   141                                              dont_move_3:
+   142                                              
+   143 000000AC 3C34                                cmp AL, "4"
+   144                                              
+   145 000000AE 7502                                jne dont_move_4
+   146                                              
+   147 000000B0 B204                                mov DL, 4
+   148                                              
+   149                                              dont_move_4:
+   150                                              
+   151 000000B2 3C35                                cmp AL, "5"
+   152                                              
+   153 000000B4 7502                                jne dont_move_5
+   154                                              
+   155 000000B6 B205                                mov DL, 5
+   156                                              
+   157                                              dont_move_5:
+   158                                              
+   159 000000B8 3C36                                cmp AL, "6"
+   160                                              
+   161 000000BA 7502                                jne dont_move_6
+   162                                              
+   163 000000BC B206                                mov DL, 6
+   164                                              
+   165                                              dont_move_6:
+   166                                              
+   167 000000BE 3C37                                cmp AL, "7"
+   168                                              
+   169 000000C0 7532                                jne dont_move
+   170                                              
+   171 000000C2 B207                                mov DL, 7
+   172                                              
+   173                                              dont_move_7:
+   174                                              
+   175 000000C4 3C38                                cmp AL, "8"
+   176                                              
+   177 000000C6 7502                                jne dont_move_8
+   178                                              
+   179 000000C8 B208                                mov DL, 8
+   180                                              
+   181                                              dont_move_8:
+   182                                              
+   183 000000CA 3C39                                cmp AL, "9"
+   184                                              
+   185 000000CC 7502                                jne dont_move_9
+   186                                              
+   187 000000CE B209                                mov DL, 9
+   188                                              
+   189                                              dont_move_9:
+   190                                              
+   191 000000D0 3C41                                cmp AL, "A"
+   192                                              
+   193 000000D2 7520                                jne dont_move
+   194                                              
+   195 000000D4 B20A                                mov DL, 10
+   196                                              
+   197 000000D6 3C42                                cmp AL, "B"
+   198                                              
+   199 000000D8 751A                                jne dont_move
+   200                                              
+   201 000000DA B20B                                mov DL, 11
+   202                                              
+   203 000000DC 3C43                                cmp AL, "C"
+   204                                              
+   205 000000DE 7514                                jne dont_move
+   206                                              
+   207 000000E0 B20C                                mov DL, 12
+   208                                              
+   209 000000E2 3C44                                cmp AL, "D"
+   210                                              
+   211 000000E4 750E                                jne dont_move
+   212                                              
+   213 000000E6 B20D                                mov DL, 13
+   214                                              
+   215 000000E8 3C45                                cmp AL, "E"
+   216                                              
+   217 000000EA 7508                                jne dont_move
+   218                                              
+   219 000000EC B20E                                mov DL, 14
+   220                                              
+   221 000000EE 3C46                                cmp AL, "F"
+   222                                              
+   223 000000F0 7502                                jne dont_move
+   224                                              
+   225 000000F2 B20F                                mov DL, 15
+   226                                              
+   227                                              dont_move:
+   228                                              
+   229 000000F4 8B0D[85000000]                      mov ECX, [nr_chars]
+   230                                              
+   231 000000FA 39CE                                cmp ESI, ECX
+   232 000000FC 7D0E                                jge break_hexa_while
+   233                                              
+   234 000000FE B100                                mov CL, 0
+   235 00000100 00D1                                add CL, DL
+   236                                              
+   237 00000102 888F[00000000]                      mov [result + EDI], CL
+   238                                              
+   239 00000108 47                                  inc EDI
+   240 00000109 46                                  inc ESI
+   241                                          
+   242 0000010A EB82                            jmp convert_hexa_while
+   243                                          
+   244                                          break_hexa_while:
+   245                                          
+   246                                          ;convert hexa to ascii
+   247                                          
+   248                                          
+   249                                          ;open file
+   250 0000010C 68[76000000]                    push dword access_mode
+   251 00000111 68[64000000]                    push dword filename
+   252 00000116 FF15[00000000]                  call [fopen]
+   253 0000011C 83C408                          add esp, 4 * 2
+   254                                          
+   255 0000011F 83F800                          cmp eax, 0
+   256 00000122 742D                            je final
+   257                                          
+   258 00000124 A3[72000000]                    mov [file_descriptor], eax
+   259                                          ;open file
+   260                                          
+   261                                          ;WRITE TO FILE
+   262                                          
+   263 00000129 68[00000000]                    push dword result
+   264 0000012E 68[6F000000]                    push dword format_fprint
+   265 00000133 FF35[72000000]                  push dword [file_descriptor]
+   266 00000139 FF15[00000000]                  call [fprintf]
+   267 0000013F 83C40C                          add esp, 4 * 3
+   268                                          
+   269                                          ;WRITE TO FILE 
+   270                                          
+   271                                          ;close file
+   272 00000142 FF35[72000000]                  push dword [file_descriptor]
+   273 00000148 FF15[00000000]                  call [fclose]
+   274 0000014E 83C404                          add esp, 4
+   275                                          ;close file
+   276                                          
+   277                                          final:
+   278                                      
+   279                                          ; exit(0)
+   280 00000151 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+   281 00000153 FF15[00000000]                  call    [exit]       ; call exit to terminate the program

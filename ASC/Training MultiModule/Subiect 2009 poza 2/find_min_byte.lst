@@ -1,0 +1,45 @@
+     1                                  bits 32
+     2                                  
+     3                                  global find_min_byte
+     4                                  
+     5                                  segment code use32 class = code public
+     6                                  
+     7                                  find_min_byte:
+     8                                  
+     9 00000000 8B54240C                    mov EDX, [ESP + 12]
+    10 00000004 BE00000000                  mov ESI, 0
+    11 00000009 8B4C2408                    mov ECX, [ESP + 8]
+    12                                      
+    13 0000000D 8A1C32                      mov BL, [EDX + ESI]
+    14 00000010 49                          dec ecx
+    15 00000011 46                          inc esi
+    16                                      
+    17                                      parse_string:
+    18                                      
+    19 00000012 83F900                          cmp ecx, dword 0
+    20 00000015 740D                            je break
+    21                                          
+    22 00000017 8A0432                          mov AL, [edx + esi]
+    23 0000001A 38D8                            cmp AL, BL
+    24                                          
+    25 0000001C 7D02                            jge not_min
+    26                                              
+    27 0000001E 88C3                            mov BL, AL    
+    28                                              
+    29                                          not_min:
+    30                                          
+    31 00000020 46                              inc ESI
+    32 00000021 49                              dec ECX
+    33                                          
+    34 00000022 EBEE                        jmp parse_string
+    35                                          
+    36                                      break:    
+    37                                       
+    38 00000024 88D8                        mov AL, BL
+    39 00000026 6698                        cbw
+    40 00000028 98                          cwde
+    41                                      
+    42 00000029 89442404                    mov [ESP + 4], EAX
+    43                                      
+    44 0000002D C3                          ret
+    45                                        
