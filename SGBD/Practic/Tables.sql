@@ -1,0 +1,40 @@
+USE ParkingLot;
+
+
+CREATE TABLE Car(
+	regNr INT PRIMARY KEY IDENTITY(1,1),
+
+);
+
+CREATE TABLE Zone(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	name VARCHAR(50)
+);
+
+CREATE TABLE Category(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	name VARCHAR(50)
+);
+
+CREATE TABLE ParkingLot(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	name VARCHAR(50),
+	maxCap INT,
+	zoneID INT,
+	categoryID INT,
+	FOREIGN KEY (zoneID) REFERENCES Zone(ID),
+	FOREIGN KEY (categoryID) REFERENCES Category(ID)
+);
+
+CREATE TABLE Ticket(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	arrival DATETIME,
+	departure DATETIME
+);
+
+CREATE TABLE CarTicket(
+	carID INT,
+	ticketID INT,
+	FOREIGN KEY (carID) REFERENCES Car(regNr),
+	FOREIGN KEY (ticketID) REFERENCES Ticket(ID)
+);

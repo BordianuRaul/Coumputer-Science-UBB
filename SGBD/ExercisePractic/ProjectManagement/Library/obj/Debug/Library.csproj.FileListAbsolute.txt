@@ -1,0 +1,10 @@
+C:\Users\Raul\Desktop\SGBD\ExercisePractic\ProjectManagement\Library\bin\Debug\Library.exe.config
+C:\Users\Raul\Desktop\SGBD\ExercisePractic\ProjectManagement\Library\bin\Debug\Library.exe
+C:\Users\Raul\Desktop\SGBD\ExercisePractic\ProjectManagement\Library\bin\Debug\Library.pdb
+C:\Users\Raul\Desktop\SGBD\ExercisePractic\ProjectManagement\Library\obj\Debug\Library.csproj.AssemblyReference.cache
+C:\Users\Raul\Desktop\SGBD\ExercisePractic\ProjectManagement\Library\obj\Debug\Library.Form1.resources
+C:\Users\Raul\Desktop\SGBD\ExercisePractic\ProjectManagement\Library\obj\Debug\Library.Properties.Resources.resources
+C:\Users\Raul\Desktop\SGBD\ExercisePractic\ProjectManagement\Library\obj\Debug\Library.csproj.GenerateResource.cache
+C:\Users\Raul\Desktop\SGBD\ExercisePractic\ProjectManagement\Library\obj\Debug\Library.csproj.CoreCompileInputs.cache
+C:\Users\Raul\Desktop\SGBD\ExercisePractic\ProjectManagement\Library\obj\Debug\Library.exe
+C:\Users\Raul\Desktop\SGBD\ExercisePractic\ProjectManagement\Library\obj\Debug\Library.pdb
