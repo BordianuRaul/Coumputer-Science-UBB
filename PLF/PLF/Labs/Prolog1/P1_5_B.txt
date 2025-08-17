@@ -1,0 +1,13 @@
+pairs([], []).
+pairs([X|T], Pairs) :-
+    pair_with(X, T, Xpairs),
+    pairs(T, RestPairs),
+    custom_append(Xpairs, RestPairs, Pairs).
+
+pair_with(_, [], []).
+pair_with(X, [Y|T], [[X, Y]|Rest]) :-
+    pair_with(X, T, Rest).
+    
+custom_append([], L, L).
+custom_append([H|T1], L2, [H|T3]) :-
+    custom_append(T1, L2, T3).

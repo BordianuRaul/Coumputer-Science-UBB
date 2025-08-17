@@ -1,0 +1,49 @@
+multiply(l1,...,ln, k) 
+{
+    [] then 1 (the list is empty)
+    
+    l1*k U multiply(l2,...ln)
+}
+
+insertE(l1,..,ln,E)
+{
+
+    [E], n = 0
+    l1 U insertE(l2,...,ln,E), otherwise
+
+}
+
+Compute the sum of elements of a list
+
+list_sum(l1,...ln)
+{
+    0, n = 0
+    l1 + list_sum(l1,...,ln) otherwise
+}
+
+Add an elemnt E on position M in a list
+
+insertOnM(l1,...,ln,E,M)=
+{
+    [E], M=1 and L=[]
+    [], M > 1 and L=[]
+    E U L if M = 1 and L != []
+    l1UinsertOnM(l2,...,ln, E, M-1)
+}
+
+sumC(l1,..,ln, C)=
+{
+    C, if L = []
+    sumC(l2,...,ln, C + l1), n > 0
+}
+
+sumC(L,0)
+
+delete all occurences of an element E from a list
+
+removeE(l1,...,ln, E)=
+{
+    [], n = 0
+    l1 U removeE(l2,...,ln, E)
+    removeE(l2,...,ln,E)
+}

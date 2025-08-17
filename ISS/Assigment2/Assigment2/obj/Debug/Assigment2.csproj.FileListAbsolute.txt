@@ -1,0 +1,7 @@
+C:\Users\Raul\Desktop\ISS\Assigment2\Assigment2\bin\Debug\Assigment2.exe.config
+C:\Users\Raul\Desktop\ISS\Assigment2\Assigment2\bin\Debug\Assigment2.exe
+C:\Users\Raul\Desktop\ISS\Assigment2\Assigment2\bin\Debug\Assigment2.pdb
+C:\Users\Raul\Desktop\ISS\Assigment2\Assigment2\obj\Debug\Assigment2.csproj.AssemblyReference.cache
+C:\Users\Raul\Desktop\ISS\Assigment2\Assigment2\obj\Debug\Assigment2.csproj.CoreCompileInputs.cache
+C:\Users\Raul\Desktop\ISS\Assigment2\Assigment2\obj\Debug\Assigment2.exe
+C:\Users\Raul\Desktop\ISS\Assigment2\Assigment2\obj\Debug\Assigment2.pdb

@@ -1,0 +1,10 @@
+Insert(E,L,[E|L]).
+
+insert(E,[H|T],[H|R]):-
+    insert(E,T,R).
+
+
+perm([],[]).
+perm([H|T],R):-
+    perm(T, TR),
+    insert(H, TR, R).

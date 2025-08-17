@@ -1,0 +1,16 @@
+% Predicate to add elements from the second set that are not in the first set
+add_unique_elements([], Acc, Acc).
+
+add_unique_elements([H|RestSet2], AccSet1, Result) :-
+    (   is_member(H, AccSet1)
+    ->  add_unique_elements(RestSet2, AccSet1, Result)
+    ;   add_unique_elements(RestSet2, [H|AccSet1], Result)
+    ).
+
+% Predicate to compute the union of two sets
+union(Set1, Set2, UnionSet) :-
+    add_unique_elements(Set2, Set1, UnionSet).
+
+is_member(E, [E|_]).
+is_member(E, [_|T]) :- is_member(E, T).
+    

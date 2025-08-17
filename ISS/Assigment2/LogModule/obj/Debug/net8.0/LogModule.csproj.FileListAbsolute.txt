@@ -1,0 +1,14 @@
+C:\Users\Raul\Desktop\ISS\Assigment2\LogModule\bin\Debug\net8.0\LogModule.exe
+C:\Users\Raul\Desktop\ISS\Assigment2\LogModule\bin\Debug\net8.0\LogModule.deps.json
+C:\Users\Raul\Desktop\ISS\Assigment2\LogModule\bin\Debug\net8.0\LogModule.runtimeconfig.json
+C:\Users\Raul\Desktop\ISS\Assigment2\LogModule\bin\Debug\net8.0\LogModule.dll
+C:\Users\Raul\Desktop\ISS\Assigment2\LogModule\bin\Debug\net8.0\LogModule.pdb
+C:\Users\Raul\Desktop\ISS\Assigment2\LogModule\obj\Debug\net8.0\LogModule.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Raul\Desktop\ISS\Assigment2\LogModule\obj\Debug\net8.0\LogModule.AssemblyInfoInputs.cache
+C:\Users\Raul\Desktop\ISS\Assigment2\LogModule\obj\Debug\net8.0\LogModule.AssemblyInfo.cs
+C:\Users\Raul\Desktop\ISS\Assigment2\LogModule\obj\Debug\net8.0\LogModule.csproj.CoreCompileInputs.cache
+C:\Users\Raul\Desktop\ISS\Assigment2\LogModule\obj\Debug\net8.0\LogModule.dll
+C:\Users\Raul\Desktop\ISS\Assigment2\LogModule\obj\Debug\net8.0\refint\LogModule.dll
+C:\Users\Raul\Desktop\ISS\Assigment2\LogModule\obj\Debug\net8.0\LogModule.pdb
+C:\Users\Raul\Desktop\ISS\Assigment2\LogModule\obj\Debug\net8.0\LogModule.genruntimeconfig.cache
+C:\Users\Raul\Desktop\ISS\Assigment2\LogModule\obj\Debug\net8.0\ref\LogModule.dll

@@ -1,0 +1,23 @@
+(defun cauta (l e)
+  (cond
+    ((null l) nil)
+    ((and (atom (car l)) (equal (car l) e)) t)
+    ((listp (car l)) (or (cauta (car l) e) (cauta (cdr l) e)))
+    (t (cauta (cdr l) e))
+  )
+)
+
+(defun drum (l e)
+  (cond
+    ((and (atom l) (not (equal l e))) nil)
+    ((and (atom l) (equal l e)) (list e))
+    ((and (listp l) (cauta l e))
+     (let ((subpaths (mapcan #'(lambda (x) (drum x e)) l)))
+       (if subpaths
+           (cons (car l) subpaths)  
+           nil)))
+    (t nil)
+  )
+)
+
+(print (drum '(A (B) (C (D) (E))) 'a))

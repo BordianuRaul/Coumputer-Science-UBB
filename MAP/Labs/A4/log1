@@ -1,0 +1,522 @@
+-------Execution Stack-------: 
+Reference: int
+ v;new(v,20);Reference: Reference: int
+
+ a;new(a,v);print( v );print( a )
+
+
+-------Symbol Table-------: 
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+Reference: int
+ v
+new(v,20);Reference: Reference: int
+
+ a;new(a,v);print( v );print( a )
+
+
+-------Symbol Table-------: 
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+Reference: int
+ v
+new(v,20);Reference: Reference: int
+
+ a;new(a,v);print( v );print( a )
+
+
+-------Symbol Table-------: 
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+new(v,20);Reference: Reference: int
+
+ a;new(a,v);print( v );print( a )
+
+
+-------Symbol Table-------: 
+v -> 0 int
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+new(v,20);Reference: Reference: int
+
+ a;new(a,v);print( v );print( a )
+
+
+-------Symbol Table-------: 
+v -> 0 int
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+new(v,20)
+Reference: Reference: int
+
+ a;new(a,v);print( v );print( a )
+
+
+-------Symbol Table-------: 
+v -> 0 int
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+new(v,20)
+Reference: Reference: int
+
+ a;new(a,v);print( v );print( a )
+
+
+-------Symbol Table-------: 
+v -> 0 int
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+Reference: Reference: int
+
+ a;new(a,v);print( v );print( a )
+
+
+-------Symbol Table-------: 
+v -> 1 int
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=20}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+Reference: Reference: int
+
+ a;new(a,v);print( v );print( a )
+
+
+-------Symbol Table-------: 
+v -> 1 int
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=20}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+Reference: Reference: int
+
+ a
+new(a,v);print( v );print( a )
+
+
+-------Symbol Table-------: 
+v -> 1 int
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=20}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+Reference: Reference: int
+
+ a
+new(a,v);print( v );print( a )
+
+
+-------Symbol Table-------: 
+v -> 1 int
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=20}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+new(a,v);print( v );print( a )
+
+
+-------Symbol Table-------: 
+a -> 0 Reference: int
+
+v -> 1 int
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=20}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+new(a,v);print( v );print( a )
+
+
+-------Symbol Table-------: 
+a -> 0 Reference: int
+
+v -> 1 int
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=20}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+new(a,v)
+print( v );print( a )
+
+
+-------Symbol Table-------: 
+a -> 0 Reference: int
+
+v -> 1 int
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=20}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+new(a,v)
+print( v );print( a )
+
+
+-------Symbol Table-------: 
+a -> 0 Reference: int
+
+v -> 1 int
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=20}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+print( v );print( a )
+
+
+-------Symbol Table-------: 
+a -> 2 Reference: int
+
+v -> 1 int
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=20, 2=1 int}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+print( v );print( a )
+
+
+-------Symbol Table-------: 
+a -> 2 Reference: int
+
+v -> 1 int
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=20, 2=1 int}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+print( v )
+print( a )
+
+
+-------Symbol Table-------: 
+a -> 2 Reference: int
+
+v -> 1 int
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=20, 2=1 int}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+print( v )
+print( a )
+
+
+-------Symbol Table-------: 
+a -> 2 Reference: int
+
+v -> 1 int
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=20, 2=1 int}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+print( a )
+
+
+-------Symbol Table-------: 
+a -> 2 Reference: int
+
+v -> 1 int
+
+
+-------Output List-------: 
+1 int
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=20, 2=1 int}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+print( a )
+
+
+-------Symbol Table-------: 
+a -> 2 Reference: int
+
+v -> 1 int
+
+
+-------Output List-------: 
+1 int
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=20, 2=1 int}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+
+
+-------Symbol Table-------: 
+a -> 2 Reference: int
+
+v -> 1 int
+
+
+-------Output List-------: 
+1 int
+2 Reference: int
+
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=20, 2=1 int}
+
+########################################################################
+
+
+-------Execution Stack-------: 
+
+
+-------Symbol Table-------: 
+a -> 2 Reference: int
+
+v -> 1 int
+
+
+-------Output List-------: 
+1 int
+2 Reference: int
+
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=20, 2=1 int}
+
+########################################################################
+
+

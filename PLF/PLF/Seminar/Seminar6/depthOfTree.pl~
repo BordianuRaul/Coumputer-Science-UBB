@@ -1,0 +1,46 @@
+%prop(l1,...,ln)
+%{
+%True, id n == 2 and |l1-l2|%3 === 0
+%prop(l2,...,ln), iff n > 2 and |l1 - l2| % 3 == 0
+%False, otherwise
+%
+
+prop([L1,L2]):-
+    D is abs(L1-L2),
+    D mod 3 == 0.
+
+prop([H1,H2|T]):-
+    D is abs(H1-H2),
+    D mod 3 == 0,
+    prop([H2|T]).
+
+%subsets(l1,...,ln)=
+%{
+%[], n == 0
+%subsets(l2,...,ln), n > 0
+%l1 U subsets(l1,...,ln), n > 0
+%}
+%subsets(List, Result)
+%(i,i),(i,0)
+
+subsets([],[]).
+subsets([H1,H2|T],R):-
+    subsets(T,R).
+subsets(H|T,R):-
+    subsets(T,R1),
+    R=[H|R1].
+
+%gen_subset(l1,...,ln)={
+%s = subsets(l1,...,ln), card(s) == 2, prop(s)
+%}
+%
+
+gen_subsets(L,R):-
+    subsets(L,R),
+    R=[_,_|T],
+    prop(R).
+
+main(L,R):-
+    findall(R1,gen_subsets(L,R1),R).
+
+

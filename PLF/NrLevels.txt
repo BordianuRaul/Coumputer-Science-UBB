@@ -1,0 +1,13 @@
+(defun num-levels (l)
+  (cond
+    ((null l) 0)
+    ((atom l) 1)
+    ((listp l) (1+ (max-level-in-list l)))
+    (t 0)))
+
+(defun max-level-in-list (lst)
+  (cond
+    ((null lst) 0)
+    (t (max (num-levels (car lst)) (max-level-in-list (cdr lst))))))
+
+(print (num-levels '(A (B) (C (D) (E)))))

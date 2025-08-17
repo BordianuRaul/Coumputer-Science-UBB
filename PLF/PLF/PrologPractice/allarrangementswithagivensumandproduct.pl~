@@ -1,0 +1,52 @@
+solution(L, K, P, S, R):-
+    arr1(L,K,A),
+    suma(A, S),
+    prod(A, P),
+    R=A.
+insert1(E,L,[E|L]).
+
+insert1(E,[H|T],[H|R]):-
+    insert1(E,T,R).
+
+
+perm1([],[]).
+perm1([H|T],R):-
+    perm1(T, TR),
+    insert1(H, TR, R).
+
+comb1([H|_], 1, [H]).
+comb1([_|T],K,R):-
+    comb1(T,K,R).
+comb1([H|T],K,[H|R]):-
+    K>1,
+    K1 is K - 1,
+    comb1(T,K1,R).
+
+lazyArr(L,K,R):-
+    comb1(L,K,C),
+    perm1(C,R).
+
+
+arr1([H|_],1,H).
+
+arr1([_|T], K, R):-
+    arr1(T,K,R).
+
+arr1([H|T],K,RA):-
+    K > 1,
+    K1 is K - 1,
+    arr1(T,K1,R),
+    insert1(H,R,RA).
+
+allS(L, K, P, S, RL):-
+    findall(R, solution(L,K,P,S,R),RL).
+
+suma([],0).
+suma([H|T],R):-
+    suma(T,R1),
+    R is R1 + H.
+
+prod([],1).
+prod([H|T],R):-
+    prod(T,RP),
+    R is RP * H.

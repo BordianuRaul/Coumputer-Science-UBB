@@ -1,0 +1,1064 @@
+-------ID = 0-------: 
+int v;Reference: int
+ a;v=10;new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+int v;Reference: int
+ a;v=10;new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------ID = 0-------: 
+int v
+Reference: int
+ a;v=10;new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+int v
+Reference: int
+ a;v=10;new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------ID = 0-------: 
+int v
+Reference: int
+ a;v=10;new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+int v
+Reference: int
+ a;v=10;new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------ID = 0-------: 
+Reference: int
+ a;v=10;new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+Reference: int
+ a;v=10;new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+v -> 0
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------ID = 0-------: 
+Reference: int
+ a;v=10;new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+Reference: int
+ a;v=10;new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+v -> 0
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------ID = 0-------: 
+Reference: int
+ a
+v=10;new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+Reference: int
+ a
+v=10;new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+v -> 0
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------ID = 0-------: 
+Reference: int
+ a
+v=10;new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+Reference: int
+ a
+v=10;new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+v -> 0
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------ID = 0-------: 
+v=10;new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+v=10;new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 0 int
+v -> 0
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------ID = 0-------: 
+v=10;new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+v=10;new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 0 int
+v -> 0
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------ID = 0-------: 
+v=10
+new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+v=10
+new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 0 int
+v -> 0
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------ID = 0-------: 
+v=10
+new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+v=10
+new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 0 int
+v -> 0
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------ID = 0-------: 
+new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 0 int
+v -> 10
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------ID = 0-------: 
+new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+new(a,22);fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 0 int
+v -> 10
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------ID = 0-------: 
+new(a,22)
+fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+new(a,22)
+fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 0 int
+v -> 10
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------ID = 0-------: 
+new(a,22)
+fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+new(a,22)
+fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 0 int
+v -> 10
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{}
+
+########################################################################
+
+
+-------ID = 0-------: 
+fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 10
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=22}
+
+########################################################################
+
+
+-------ID = 0-------: 
+fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+fork(write heap(30);v=32;print( v );print( read from heap (a) ));print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 10
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=22}
+
+########################################################################
+
+
+-------ID = 0-------: 
+fork(write heap(30);v=32;print( v );print( read from heap (a) ))
+print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+fork(write heap(30);v=32;print( v );print( read from heap (a) ))
+print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 10
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=22}
+
+########################################################################
+
+
+-------ID = 0-------: 
+fork(write heap(30);v=32;print( v );print( read from heap (a) ))
+print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+fork(write heap(30);v=32;print( v );print( read from heap (a) ))
+print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 10
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=22}
+
+########################################################################
+
+
+-------ID = 0-------: 
+print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 10
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=22}
+
+########################################################################
+
+
+-------ID = 0-------: 
+write heap(30);v=32;print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+write heap(30);v=32;print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 10
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=22}
+
+########################################################################
+
+
+-------ID = 0-------: 
+print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 10
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=22}
+
+########################################################################
+
+
+-------ID = 0-------: 
+write heap(30)
+v=32;print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+write heap(30)
+v=32;print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 10
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=22}
+
+########################################################################
+
+
+-------ID = 0-------: 
+print( v )
+print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+print( v )
+print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 10
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=22}
+
+########################################################################
+
+
+-------ID = 0-------: 
+write heap(30)
+v=32;print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+write heap(30)
+v=32;print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 10
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=22}
+
+########################################################################
+
+
+-------ID = 0-------: 
+print( v )
+print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+print( v )
+print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 10
+
+
+-------Output List-------: 
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=22}
+
+########################################################################
+
+
+-------ID = 0-------: 
+v=32;print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+v=32;print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 10
+
+
+-------Output List-------: 
+10
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=30}
+
+########################################################################
+
+
+-------ID = 0-------: 
+print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 10
+
+
+-------Output List-------: 
+10
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=30}
+
+########################################################################
+
+
+-------ID = 0-------: 
+v=32;print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+v=32;print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 10
+
+
+-------Output List-------: 
+10
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=30}
+
+########################################################################
+
+
+-------ID = 0-------: 
+print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 10
+
+
+-------Output List-------: 
+10
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=30}
+
+########################################################################
+
+
+-------ID = 0-------: 
+v=32
+print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+v=32
+print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 10
+
+
+-------Output List-------: 
+10
+30
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=30}
+
+########################################################################
+
+
+-------ID = 0-------: 
+
+
+-------Execution Stack-------: 
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 10
+
+
+-------Output List-------: 
+10
+30
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=30}
+
+########################################################################
+
+
+-------ID = 0-------: 
+v=32
+print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+v=32
+print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 10
+
+
+-------Output List-------: 
+10
+30
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=30}
+
+########################################################################
+
+
+-------ID = 0-------: 
+print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 32
+
+
+-------Output List-------: 
+10
+30
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=30}
+
+########################################################################
+
+
+-------ID = 0-------: 
+print( v );print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+print( v );print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 32
+
+
+-------Output List-------: 
+10
+30
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=30}
+
+########################################################################
+
+
+-------ID = 0-------: 
+print( v )
+print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+print( v )
+print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 32
+
+
+-------Output List-------: 
+10
+30
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=30}
+
+########################################################################
+
+
+-------ID = 0-------: 
+print( v )
+print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+print( v )
+print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 32
+
+
+-------Output List-------: 
+10
+30
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=30}
+
+########################################################################
+
+
+-------ID = 0-------: 
+print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 32
+
+
+-------Output List-------: 
+10
+30
+32
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=30}
+
+########################################################################
+
+
+-------ID = 0-------: 
+print( read from heap (a) )
+
+
+-------Execution Stack-------: 
+print( read from heap (a) )
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 32
+
+
+-------Output List-------: 
+10
+30
+32
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=30}
+
+########################################################################
+
+
+-------ID = 0-------: 
+
+
+-------Execution Stack-------: 
+
+
+-------Symbol Table-------: 
+a -> 1 int
+v -> 32
+
+
+-------Output List-------: 
+10
+30
+32
+30
+
+
+-------FileTable List-------: 
+
+
+-------Heap-------: 
+{1=30}
+
+########################################################################
+
+

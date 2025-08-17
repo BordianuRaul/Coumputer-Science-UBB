@@ -1,0 +1,22 @@
+%reverseWithColector(list - list, C- colector, R -result)
+%flow (i,i,o),(i,i,i)
+%
+
+reverseWithColector([], C, C).
+
+reverseWithColector([H|T], C, R):-
+    C1=[H|C],
+    reverseWithColector(T,C1,R).
+
+%reverse(list,R-result)
+%flow(i,o),(i,i)
+%
+reverse([],[]).
+
+reverse([H|T],R):-
+    reverse(T,R1),
+    myAppend(R1,H,R).
+
+myAppend([],E,[E]).
+myAppend([H|T], E, [H|R]):-
+    myAppend(T,E,R).

@@ -1,0 +1,31 @@
+USE Lab3_Week8
+
+DBCC CHECKIDENT ('Airport', RESEED, 0);
+
+DBCC CHECKIDENT ('Apron', RESEED, 0);
+
+DBCC CHECKIDENT ('Airplane', RESEED, 0);
+
+DBCC CHECKIDENT ('Heliport', RESEED, 0);
+
+DBCC CHECKIDENT ('Airline', RESEED, 0);
+
+DBCC CHECKIDENT ('Runway', RESEED, 0);
+
+DBCC CHECKIDENT ('TaxiStation', RESEED, 0);
+
+DBCC CHECKIDENT ('ATCTower', RESEED, 0);
+
+DBCC CHECKIDENT ('ParkingLot', RESEED, 0);
+
+
+DELETE FROM AirportAirline;
+DELETE FROM Airplane;
+DELETE FROM Apron;
+DELETE FROM Runway;
+DELETE FROM TaxiStation;
+DELETE FROM ATCTower;
+DELETE FROM ParkingLot;
+DELETE FROM Heliport;
+DELETE FROM Airline;
+DELETE FROM Airport;

@@ -1,0 +1,29 @@
+
+(defun least_common_multiple (a b)
+    (cond
+        ((and (not (numberp a)) (not (numberp b))) nil)
+        ((not (numberp a)) b)
+        ((not (numberp b)) a)
+        (T (/ (* a b) (greatest_common_divisor a b)))
+    )
+)
+
+(defun greatest_common_divisor (a b)
+    (cond
+        ((and (not (numberp a)) (not (numberp b))) nil)
+        ((not (numberp a)) b)
+        ((not (numberp b)) a)
+        ((equal b 0) a)
+        (T (greatest_common_divisor b (mod a b)))
+    )
+)
+
+(defun list_least_common_multiple (l)
+    (cond
+        ((and (atom (car l)) (null (cdr l))) (car l))
+        ((listp (car l)) (least_common_multiple (list_least_common_multiple (car l)) (list_least_common_multiple (cdr l))))
+        (T (least_common_multiple (car l) (list_least_common_multiple (cdr l))))
+    )
+)
+
+(print (list_least_common_multiple '(24 ( 16 (12 A B)) 72)))
