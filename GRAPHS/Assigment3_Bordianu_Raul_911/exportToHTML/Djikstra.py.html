@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>Djikstra.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #808080;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Djikstra.py</font>
+</center></td></tr></table>
+<pre><span class="s0">def </span><span class="s1">buildPath(self</span><span class="s0">, </span><span class="s1">data: dict</span><span class="s0">, </span><span class="s1">start: int</span><span class="s0">, </span><span class="s1">end: int):</span>
+    <span class="s1">path = []</span>
+
+    <span class="s1">current = start</span>
+    <span class="s1">path.append(start)</span>
+
+    <span class="s0">while </span><span class="s1">end != current:</span>
+        <span class="s1">current = data[current]</span>
+        <span class="s1">path.append(current)</span>
+
+    <span class="s0">return </span><span class="s1">path</span>
+
+
+<span class="s0">def </span><span class="s1">dijkstra(self</span><span class="s0">, </span><span class="s1">start</span><span class="s0">, </span><span class="s1">end):</span>
+    <span class="s2"># Initialise the priority que, the dict for the next vertex in the path and one for the cost for each path from</span>
+    <span class="s2"># the end vertex to the corresponding vertex</span>
+    <span class="s1">pq = queue.PriorityQueue()</span>
+    <span class="s1">next = {}</span>
+    <span class="s1">dist = {}</span>
+
+    <span class="s2"># Add in the priority que the end vertex and the cost 0 since we start from it</span>
+    <span class="s1">pq.put((</span><span class="s3">0</span><span class="s0">, </span><span class="s1">end))</span>
+
+    <span class="s2"># Add the vertex we start from in the dict responsible for the dist of the paths</span>
+    <span class="s1">dist[end] = </span><span class="s3">0</span>
+
+    <span class="s2"># Initialise found with false</span>
+    <span class="s1">found = </span><span class="s0">False</span>
+
+    <span class="s2"># We loop until the priority que is empty (case in which every possible path was checked)</span>
+    <span class="s2"># or we found a path to the start vertex, case in which it is the shortest possible path</span>
+    <span class="s2"># because at each step we choose the cheapest path when we decide which vertex to visit next</span>
+    <span class="s0">while not </span><span class="s1">pq.empty() </span><span class="s0">and not </span><span class="s1">found:</span>
+
+        <span class="s2"># Get from the priority que the next in line element</span>
+        <span class="s1">current = pq.get()</span>
+
+        <span class="s2"># Iterate trough all it's inbound neighbors(since we go in a backwards order)</span>
+        <span class="s0">for </span><span class="s1">neighbor </span><span class="s0">in </span><span class="s1">self.getInbound(current[</span><span class="s3">1</span><span class="s1">]):</span>
+
+            <span class="s2"># If the neighbor is not in inside the dist dict we add it and it's corresponding cost</span>
+            <span class="s2"># or we found a cheaper way to reach the same node we change the cost to the new cheaper one</span>
+            <span class="s2"># and update the path to the node as well</span>
+            <span class="s0">if </span><span class="s1">neighbor </span><span class="s0">not in </span><span class="s1">dist.keys() </span><span class="s0">or </span><span class="s1">\</span>
+                    <span class="s1">dist[current[</span><span class="s3">1</span><span class="s1">]] + self.retrieve_info(neighbor</span><span class="s0">, </span><span class="s1">current[</span><span class="s3">1</span><span class="s1">]) &lt; dist[neighbor]:</span>
+                <span class="s1">dist[neighbor] = dist[current[</span><span class="s3">1</span><span class="s1">]] + self.retrieve_info(neighbor</span><span class="s0">, </span><span class="s1">current[</span><span class="s3">1</span><span class="s1">])</span>
+                <span class="s1">pq.put((dist[neighbor]</span><span class="s0">, </span><span class="s1">neighbor))</span>
+                <span class="s1">next[neighbor] = current[</span><span class="s3">1</span><span class="s1">]</span>
+
+        <span class="s2"># If the start vertex was reached we set the found flag to true</span>
+        <span class="s0">if </span><span class="s1">current[</span><span class="s3">1</span><span class="s1">] == start:</span>
+            <span class="s1">found = </span><span class="s0">True</span>
+
+    <span class="s2"># If start is in the next dictionary it means there is a path to it</span>
+    <span class="s2"># else it means there is no path to the start node so we return False in the UI</span>
+    <span class="s2"># and a corresponding message will be printed</span>
+    <span class="s0">if </span><span class="s1">start </span><span class="s0">not in </span><span class="s1">next.keys():</span>
+        <span class="s0">return False, </span><span class="s3">0</span><span class="s0">, </span><span class="s3">0</span>
+    <span class="s0">else</span><span class="s1">:</span>
+        <span class="s0">return True, </span><span class="s1">self.buildPath(next</span><span class="s0">, </span><span class="s1">start</span><span class="s0">, </span><span class="s1">end)</span><span class="s0">, </span><span class="s1">dist[start]</span>
+</pre>
+</body>
+</html>
