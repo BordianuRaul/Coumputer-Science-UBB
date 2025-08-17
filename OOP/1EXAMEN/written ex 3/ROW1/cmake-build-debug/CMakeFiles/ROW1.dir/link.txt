@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/ROW1.dir/main.cpp.o CMakeFiles/ROW1.dir/Object.cpp.o CMakeFiles/ROW1.dir/Integer.cpp.o CMakeFiles/ROW1.dir/String.cpp.o CMakeFiles/ROW1.dir/MyObjectList.cpp.o -o ROW1 

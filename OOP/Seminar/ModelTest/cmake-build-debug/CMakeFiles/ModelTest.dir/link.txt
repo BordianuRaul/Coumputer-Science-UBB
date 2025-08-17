@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/ModelTest.dir/main.cpp.o CMakeFiles/ModelTest.dir/Domain/Car.cpp.o CMakeFiles/ModelTest.dir/Repo/Repo.cpp.o CMakeFiles/ModelTest.dir/Service/Service.cpp.o CMakeFiles/ModelTest.dir/UI/UI.cpp.o -o ModelTest 

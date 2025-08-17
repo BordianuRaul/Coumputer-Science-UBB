@@ -1,0 +1,3 @@
+C:/Users/Raul/Desktop/OOP/Seminar/Seminar3_Week2_stub/cmake-build-debug/CMakeFiles/Seminar3_Week2_stub.dir
+C:/Users/Raul/Desktop/OOP/Seminar/Seminar3_Week2_stub/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Raul/Desktop/OOP/Seminar/Seminar3_Week2_stub/cmake-build-debug/CMakeFiles/rebuild_cache.dir

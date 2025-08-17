@@ -1,0 +1,17 @@
+# ninja log v5
+1	115	7009479815338478	CMakeFiles/TestFunctions.dir/main.cpp.obj	698c3aa220a338ac
+116	229	7009479816448481	TestFunctions.exe	cf6233f76f211336
+2	94	7009479906784219	CMakeFiles/TestFunctions.dir/main.cpp.obj	698c3aa220a338ac
+95	187	7009479907674220	TestFunctions.exe	cf6233f76f211336
+3	111	7009479961523899	CMakeFiles/TestFunctions.dir/main.cpp.obj	698c3aa220a338ac
+111	224	7009479962623828	TestFunctions.exe	cf6233f76f211336
+3	150	7010270715085532	CMakeFiles/TestFunctions.dir/main.cpp.obj	698c3aa220a338ac
+151	689	7010270720451801	TestFunctions.exe	cf6233f76f211336
+1	95	7010271399410126	CMakeFiles/TestFunctions.dir/main.cpp.obj	698c3aa220a338ac
+95	186	7010271400285307	TestFunctions.exe	cf6233f76f211336
+2	91	7010272658460817	CMakeFiles/TestFunctions.dir/main.cpp.obj	698c3aa220a338ac
+92	184	7010272659357438	TestFunctions.exe	cf6233f76f211336
+2	85	7010272956839106	CMakeFiles/TestFunctions.dir/main.cpp.obj	698c3aa220a338ac
+85	169	7010272957655782	TestFunctions.exe	cf6233f76f211336
+2	89	7010273794340584	CMakeFiles/TestFunctions.dir/main.cpp.obj	698c3aa220a338ac
+89	175	7010273795160790	TestFunctions.exe	cf6233f76f211336

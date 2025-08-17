@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Seminar4_911"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Seminar4_911">
+				<Option output="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Seminar4_911" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/Playlist"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Makefile&quot;  VERBOSE=1 Seminar4_911"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Seminar4_911/fast">
+				<Option output="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Seminar4_911" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/Playlist"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Makefile&quot;  VERBOSE=1 Seminar4_911/fast"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/Playlist/FilePlayList.cpp">
+			<Option target="Seminar4_911"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/Playlist/FilePlayList.h">
+			<Option target="Seminar4_911"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/Playlist/PlayList.cpp">
+			<Option target="Seminar4_911"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/Playlist/PlayList.h">
+			<Option target="Seminar4_911"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/Playlist/Repository.cpp">
+			<Option target="Seminar4_911"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/Playlist/Repository.h">
+			<Option target="Seminar4_911"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/Playlist/RepositoryExceptions.cpp">
+			<Option target="Seminar4_911"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/Playlist/RepositoryExceptions.h">
+			<Option target="Seminar4_911"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/Playlist/Service.cpp">
+			<Option target="Seminar4_911"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/Playlist/Service.h">
+			<Option target="Seminar4_911"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/Playlist/Song.cpp">
+			<Option target="Seminar4_911"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/Playlist/Song.h">
+			<Option target="Seminar4_911"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/Playlist/UI.cpp">
+			<Option target="Seminar4_911"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/Playlist/UI.h">
+			<Option target="Seminar4_911"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/Playlist/Utils.cpp">
+			<Option target="Seminar4_911"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/Playlist/Utils.h">
+			<Option target="Seminar4_911"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/Playlist/main.cpp">
+			<Option target="Seminar4_911"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/OOP/Seminar/Seminar4_911/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
