@@ -1,0 +1,113 @@
+use Practic
+
+CREATE TABLE Client
+(
+	clientID INT PRIMARY KEY,
+	name VARCHAR(100),
+	idenNr INT UNIQUE
+)
+
+CREATE TABLE Bank
+(
+	bankID INT PRIMARY KEY
+)
+
+CREATE TABLE BankClient
+(
+	bankID INT FOREIGN KEY REFERENCES Bank(bankID),
+	idenNR INT FOREIGN KEY REFERENCES Client(idenNR),
+	PRIMARY KEY(bankID, idenNR),
+	clientName VARCHAR(100),
+
+)
+
+CREATE TABLE BankingService
+(
+	bankID INT FOREIGN KEY REFERENCES Bank(bankID),
+	idenNr INT FOREIGN KEY REFERENCES Client(idenNR),
+	PRIMARY KEY(bankID, idenNR)
+
+)
+
+CREATE TABLE InvestingService
+(
+	investingServiceID INT PRIMARY KEY,
+	bankID INT FOREIGN KEY REFERENCES Bank(bankID),
+	clientID INT FOREIGN KEY REFERENCES Client(clientID),
+	clientName VARCHAR(100)
+
+)
+
+USE Practic
+
+SELECT * FROM Client
+SELECT * FROM Bank
+SELECT * FROM BankClient
+SELECT * FROM BankingService
+SELECT * FROM InvestingService
+
+
+
+
+CREATE OR ALTER PROCEDURE addClient
+	@bank INT,
+	@idenNR INT
+
+AS
+BEGIN
+	IF (EXISTS(SELECT * FROM BankClient BC WHERE BC.idenNr = @idenNR AND BC.bankID = @bank))
+		INSERT INTO BankingServices VALUES (@bank, @idenNR)
+	
+END
+
+CREATE OR ALTER FUNCTION NamesOfClients ()
+    RETURNS TABLE
+AS
+RETURN
+(
+    SELECT clientName
+    FROM BankClient
+    WHERE bankID IN
+        (SELECT bankID
+         FROM BankingServices
+         GROUP BY bankID
+         HAVING COUNT(*) > 1)
+);
+GO
+
+CREATE OR ALTER VIEW viewClients
+as
+	SELECT clientName
+	FROM BankClient
+go
+
+USE Practic
+
+INSERT INTO Client (clientID, name, idenNr) VALUES
+(1, 'John',123456789),
+(2, 'Jane',987654321),
+(3, 'Johnson',555555555);
+
+
+INSERT INTO Bank (bankID) VALUES
+(101),
+(102),
+(103);
+
+
+INSERT INTO BankClient (bankID, idenNR, clientName) VALUES
+(101, 123456789, 'John101'),
+(102, 987654321, 'Jane102'),
+(103, 555555555, 'Alice103');
+
+
+INSERT INTO BankingService (bankID, idenNR) VALUES
+(101, 123456789),
+(102, 987654321),
+(103, 555555555);
+
+
+INSERT INTO InvestingService (investingServiceID, bankID, clientID, clientName) VALUES
+(201, 101, 1, 'John201'),
+(202, 102, 2, 'Jane202'),
+(203, 103, 3, 'Johnson203');

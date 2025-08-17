@@ -1,0 +1,13 @@
+USE TryStuff
+
+SELECT *
+FROM Airport;
+
+SELECT *
+FROM Airline
+
+SELECT *
+FROM AirportAirline
+
+SELECT *
+FROM PARKINGLOT
