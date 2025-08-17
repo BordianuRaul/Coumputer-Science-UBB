@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/SortedBag.dir/App.cpp.o CMakeFiles/SortedBag.dir/ExtendedTest.cpp.o CMakeFiles/SortedBag.dir/ShortTest.cpp.o CMakeFiles/SortedBag.dir/SortedBag.cpp.o CMakeFiles/SortedBag.dir/SortedBagIterator.cpp.o -o SortedBag 

@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/SortedMapLab1.dir/App.cpp.o CMakeFiles/SortedMapLab1.dir/ExtendedTest.cpp.o CMakeFiles/SortedMapLab1.dir/ShortTest.cpp.o CMakeFiles/SortedMapLab1.dir/SMIterator.cpp.o CMakeFiles/SortedMapLab1.dir/SortedMap.cpp.o -o SortedMapLab1 
