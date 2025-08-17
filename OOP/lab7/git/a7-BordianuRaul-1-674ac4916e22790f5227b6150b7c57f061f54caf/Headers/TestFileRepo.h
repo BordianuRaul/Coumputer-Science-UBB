@@ -1,0 +1,10 @@
+//
+// Created by Raul on 5/2/2023.
+//
+
+#ifndef A7_BORDIANURAUL_1_TESTFILEREPO_H
+#define A7_BORDIANURAUL_1_TESTFILEREPO_H
+
+void testAllFileRepo();
+
+#endif //A7_BORDIANURAUL_1_TESTFILEREPO_H

@@ -1,0 +1,27 @@
+# ninja log v5
+10	298	7071616724523923	Seminar6_V2_autogen/timestamp	43db4a035da35cde
+1113	4024	7071608544915719	CMakeFiles/Seminar6_V2.dir/Seminar6_911.cpp.obj	9453da869f041d90
+10	298	7071616724523923	Seminar6_V2_autogen/mocs_compilation.cpp	43db4a035da35cde
+10	298	7071616724523923	D:/UBB/Semester 2/OOP/Seminar6_V2/cmake-build-debug/Seminar6_V2_autogen/timestamp	43db4a035da35cde
+10	298	7071616724523923	D:/UBB/Semester 2/OOP/Seminar6_V2/cmake-build-debug/Seminar6_V2_autogen/mocs_compilation.cpp	43db4a035da35cde
+303	2594	7071616747500028	CMakeFiles/Seminar6_V2.dir/studentsModel.cpp.obj	8125c0d7f856b09
+1090	1889	7071608523561708	CMakeFiles/Seminar6_V2.dir/Utils.cpp.obj	472dfa8ae50ce2c0
+971	1847	7071616611020074	CMakeFiles/Seminar6_V2.dir/Student.cpp.obj	78048fd0f767b4f2
+942	4211	7071616634651038	CMakeFiles/Seminar6_V2.dir/main.cpp.obj	f64aba08df836e9b
+957	4255	7071616635101899	CMakeFiles/Seminar6_V2.dir/TeacherWidget.cpp.obj	35c13f4fc2fbfd93
+936	4266	7071616635199912	CMakeFiles/Seminar6_V2.dir/Seminar6_V2_autogen/mocs_compilation.cpp.obj	5a89f80287e0e112
+977	1928	7071616611818676	CMakeFiles/Seminar6_V2.dir/Repository.cpp.obj	ce211da41366cc95
+2594	3089	7071616750285409	Seminar6_V2.exe	26f2968459446047
+4	1253	7097496039055682	Seminar6_V2_autogen/timestamp	ddc1b3725f39a69c
+4	1253	7097496039055682	Seminar6_V2_autogen/mocs_compilation.cpp	ddc1b3725f39a69c
+4	1253	7097496039055682	D:/UBB/Semester 2/OOP/Seminar6_V2/cmake-build-debug/Seminar6_V2_autogen/timestamp	ddc1b3725f39a69c
+4	1253	7097496039055682	D:/UBB/Semester 2/OOP/Seminar6_V2/cmake-build-debug/Seminar6_V2_autogen/mocs_compilation.cpp	ddc1b3725f39a69c
+1275	2125	7097496048535962	CMakeFiles/Seminar6_V2.dir/Utils.cpp.obj	2a60c68cb867aabc
+1300	2130	7097496048593701	CMakeFiles/Seminar6_V2.dir/Student.cpp.obj	b223ee855bdec791
+1281	2161	7097496048914884	CMakeFiles/Seminar6_V2.dir/Repository.cpp.obj	abfe4996a065c850
+1269	3809	7097496065382713	CMakeFiles/Seminar6_V2.dir/studentsModel.cpp.obj	2cca4dc42aad6c37
+1288	4429	7097496071576988	CMakeFiles/Seminar6_V2.dir/Seminar6_911.cpp.obj	959c48837f968b71
+1263	4515	7097496072458874	CMakeFiles/Seminar6_V2.dir/TeacherWidget.cpp.obj	f33b89ff81c92919
+1253	4525	7097496072544744	CMakeFiles/Seminar6_V2.dir/Seminar6_V2_autogen/mocs_compilation.cpp.obj	ee50382d935a15ac
+1259	4583	7097496073115631	CMakeFiles/Seminar6_V2.dir/main.cpp.obj	1e3bd232aa5a3456
+4583	5795	7097496076924108	Seminar6_V2.exe	7239c4a3883abf1b

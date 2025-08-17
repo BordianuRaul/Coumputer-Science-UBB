@@ -1,0 +1,3 @@
+/mnt/c/Users/Raul/Desktop/OOP/1EXAMEN/written ex 3/ROW1/cmake-build-debug/CMakeFiles/ROW1.dir
+/mnt/c/Users/Raul/Desktop/OOP/1EXAMEN/written ex 3/ROW1/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt/c/Users/Raul/Desktop/OOP/1EXAMEN/written ex 3/ROW1/cmake-build-debug/CMakeFiles/rebuild_cache.dir

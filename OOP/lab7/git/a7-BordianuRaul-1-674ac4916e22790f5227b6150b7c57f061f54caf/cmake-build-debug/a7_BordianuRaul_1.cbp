@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="a7_BordianuRaul_1"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="a6_BordianuRaul_1">
+				<Option output="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/a6_BordianuRaul_1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Headers"/>
+					<Add directory="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Repository"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/Makefile&quot;  VERBOSE=1 a6_BordianuRaul_1"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="a6_BordianuRaul_1/fast">
+				<Option output="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/a6_BordianuRaul_1" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Headers"/>
+					<Add directory="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Repository"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/Makefile&quot;  VERBOSE=1 a6_BordianuRaul_1/fast"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j12 -f &quot;/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Domain/Tutorial.cpp">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Headers/CSVRepo.h">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Headers/FileRepo.h">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Headers/HTMLRepo.h">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Headers/RepositoryException.h">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Headers/Service.h">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Headers/TestFileRepo.h">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Headers/TestRepository.h">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Headers/TestTutorial.h">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Headers/Tests.h">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Headers/Tutorial.h">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Headers/TutorialValidator.h">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Headers/UserInterface.h">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Headers/testService.h">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Repository/CSVRepo.cpp">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Repository/FileRepo.cpp">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Repository/HTMLRepo.cpp">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Repository/Repository.h">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Service/Service.cpp">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Tests/TestFileRepo.cpp">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Tests/TestRepository.cpp">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Tests/TestTutorial.cpp">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Tests/Tests.cpp">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Tests/testService.cpp">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/UserInterface/UserInterface.cpp">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Validators/RepositoryException.cpp">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/Validators/TutorialValidator.cpp">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/main.cpp">
+			<Option target="a6_BordianuRaul_1"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/Raul/Desktop/git/a7-BordianuRaul-1-674ac4916e22790f5227b6150b7c57f061f54caf/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
