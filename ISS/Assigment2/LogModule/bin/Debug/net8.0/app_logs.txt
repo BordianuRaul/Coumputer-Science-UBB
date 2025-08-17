@@ -1,0 +1,9 @@
+2024-03-26 12:16:37 [INFO] - Application started
+
+2024-03-26 12:16:37 [INFO] - Processing data
+
+2024-03-26 12:16:37 [ERROR] - Critical error: Database connection lost
+2024-03-26 12:16:37 [WARN] - Warning: Data format mismatch
+
+2024-03-26 12:16:37 [INFO] - Request received from IP: 192.168.0.1
+
