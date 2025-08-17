@@ -1,0 +1,27 @@
+. (dot): Matches any character except a newline.
+* (asterisk): Matches zero or more occurrences of the preceding character or group.
++ (plus): Matches one or more occurrences of the preceding character or group.
+? (question mark): Matches zero or one occurrence of the preceding character or group.
+[] (character class): Matches any one character within the brackets. For example, [aeiou] matches any vowel.
+^ (caret): Matches the beginning of a line.
+$ (dollar): Matches the end of a line.
+() (grouping): Groups characters or subpatterns together for matching or capturing.
+| (pipe): Matches either the pattern on the left or the pattern on the right.
+\ (backslash): Escapes a special character, or introduces a special sequence such as \n for a newline.
+
+/pattern/: Matches the exact string "pattern" in the input.
+/^pattern/: Matches "pattern" at the beginning of a line.
+/pattern$/: Matches "pattern" at the end of a line.
+/pat.*ern/: Matches "pat" followed by any number of characters, and then "ern".
+/pat+ern/: Matches "pat" followed by one or more occurrences of the letter "t", and then "ern".
+/pat?ern/: Matches "pat" followed by zero or one occurrence of the letter "t", and then "ern".
+/[aeiou]/: Matches any vowel.
+/[^aeiou]/: Matches any character that is not a vowel.
+/pattern1|pattern2/: Matches either "pattern1" or "pattern2".
+/(pat)/: Groups the characters "pat" together for matching or capturing.
+
+awk 'pattern {action}' input_file
+
+awk '/pattern/ {print}' input.txt  # print lines that match 'pattern'
+awk '$1 > 10 {print $2}' input.txt  # print the second field if the first field is greater than 10
+awk '{sum += $1} END {print sum}' input.txt  # calculate and print the sum of the first field

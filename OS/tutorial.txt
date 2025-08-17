@@ -1,0 +1,27 @@
+#!/bin/bash
+
+nrFiles=0
+sizeFiles=0
+nrDirectory=0
+names=""
+for arg in "$@"
+do
+        if [ -f $arg ]
+        then
+                nrFiles=$(($nrFiles + 1))
+        elif [ -d $arg ]; then
+                nrDirectory=$(($nrDirectory + 1))
+                if [ -x $arg ]; then
+
+                        names="$names $arg"
+                fi
+        elif [[ $arg =~ ^-?[0-9]+$ ]]; then
+                echo "$arg" >> numbers.txt
+        fi
+done
+
+sort -nr numbers.txt -o numbers.txt
+
+echo "Nr direct= $nrDirectory and from which there are $names with exec permision"
+echo "Nr files= $nrFiles"
+cat numbers.txt

@@ -1,0 +1,3 @@
+  1 Sa se scrie un script care primeste oricate cuvinte ca parametri, si citeste de la tast    atura incontinuu nume de fisiere.
+  2 Citirea se termina atunci cand toate cuvintele primite ca parametri au fost gasite in f    isierele citite.
+  3 NU se vor efectua validarile necesare!
