@@ -1,0 +1,106 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Raul\\Desktop\\SGBD\\ExercisePractic\\ProjectManagement\\WindowsFormsApp1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4820D9D9-9E89-4678-9231-A6A3CC0ABB7F}|WindowsFormsApp1.csproj|c:\\users\\raul\\desktop\\sgbd\\exercisepractic\\projectmanagement\\windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4820D9D9-9E89-4678-9231-A6A3CC0ABB7F}|WindowsFormsApp1.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Raul\\Desktop\\SGBD\\ExercisePractic\\Zoo\\Zoo\\Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4820D9D9-9E89-4678-9231-A6A3CC0ABB7F}|WindowsFormsApp1.csproj|c:\\users\\raul\\desktop\\sgbd\\exercisepractic\\projectmanagement\\windowsformsapp1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4820D9D9-9E89-4678-9231-A6A3CC0ABB7F}|WindowsFormsApp1.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Raul\\Desktop\\SGBD\\Lab1Part2\\Lab1Part2\\Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\Raul\\Desktop\\SGBD\\ExercisePractic\\ProjectManagement\\WindowsFormsApp1\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\Raul\\Desktop\\SGBD\\ExercisePractic\\ProjectManagement\\WindowsFormsApp1\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AQIAADcAAAAAAAAAAAArwFQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T14:01:52.153Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Raul\\Desktop\\SGBD\\ExercisePractic\\ProjectManagement\\WindowsFormsApp1\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\Raul\\Desktop\\SGBD\\ExercisePractic\\ProjectManagement\\WindowsFormsApp1\\Form1.cs [Design]",
+              "RelativeToolTip": "Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T14:01:50.055Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\Raul\\Desktop\\SGBD\\Lab1Part2\\Lab1Part2\\Form1.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\Lab1Part2\\Lab1Part2\\Form1.cs",
+              "ToolTip": "C:\\Users\\Raul\\Desktop\\SGBD\\Lab1Part2\\Lab1Part2\\Form1.cs",
+              "RelativeToolTip": "..\\..\\..\\Lab1Part2\\Lab1Part2\\Form1.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T11:32:08.519Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "a9e5f28f-a4c8-4b35-ad28-ca166c0fb609",
+        "Display": 1,
+        "X": 595,
+        "Y": 101,
+        "Width": 1228,
+        "Height": 749,
+        "WindowState": 2
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\Raul\\Desktop\\SGBD\\ExercisePractic\\Zoo\\Zoo\\Form1.cs",
+              "RelativeDocumentMoniker": "..\\..\\Zoo\\Zoo\\Form1.cs",
+              "ToolTip": "C:\\Users\\Raul\\Desktop\\SGBD\\ExercisePractic\\Zoo\\Zoo\\Form1.cs",
+              "RelativeToolTip": "..\\..\\Zoo\\Zoo\\Form1.cs",
+              "ViewState": "AQIAACoAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-26T14:36:54.663Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

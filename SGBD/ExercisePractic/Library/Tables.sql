@@ -1,0 +1,55 @@
+use Library
+
+CREATE TABLE Library(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	name VARCHAR(50),
+	location VARCHAR(50)
+);
+
+CREATE TABLE Publisher(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	name VARCHAR(50)
+);
+
+CREATE TABLE Author(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	name VARCHAR(50)
+);
+
+CREATE TABLE Book(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	libraryID INT,
+	FOREIGN KEY(libraryID) REFERENCES Library(ID),
+	title VARCHAR(100),
+	publisherID INT,
+	FOREIGN KEY(publisherID) REFERENCES Publisher(ID)
+
+);
+
+CREATE TABLE BookAuthor(
+	bookID INT,
+	FOREIGN KEY (bookID) REFERENCES Book(ID),
+	authorID INT,
+	FOREIGN KEY(authorID) REFERENCES Author(ID),
+	PRIMARY KEY(bookID, authorID)
+);
+
+CREATE TABLE Affiliation(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	name VARCHAR(50)
+);
+
+CREATE TABLE Reader(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	name VARCHAR(50),
+	preferance VARCHAR(50),
+	affiliationID INT,
+	FOREIGN KEY(affiliationID) REFERENCES Affiliation(ID)
+);
+
+CREATE TABLE ReaderBook(
+	readerID INT,
+	bookID INT,
+	FOREIGN KEY(readerID) REFERENCES Reader(ID),
+	FOREIGN KEY(bookID) REFERENCES Book(ID)
+);

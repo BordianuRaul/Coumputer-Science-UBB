@@ -1,0 +1,14 @@
+C:\Users\Raul\Desktop\SGBD\Lab1\Seminar2ISS\Seminar2ISS\bin\Debug\net8.0\Seminar2ISS.exe
+C:\Users\Raul\Desktop\SGBD\Lab1\Seminar2ISS\Seminar2ISS\bin\Debug\net8.0\Seminar2ISS.deps.json
+C:\Users\Raul\Desktop\SGBD\Lab1\Seminar2ISS\Seminar2ISS\bin\Debug\net8.0\Seminar2ISS.runtimeconfig.json
+C:\Users\Raul\Desktop\SGBD\Lab1\Seminar2ISS\Seminar2ISS\bin\Debug\net8.0\Seminar2ISS.dll
+C:\Users\Raul\Desktop\SGBD\Lab1\Seminar2ISS\Seminar2ISS\bin\Debug\net8.0\Seminar2ISS.pdb
+C:\Users\Raul\Desktop\SGBD\Lab1\Seminar2ISS\Seminar2ISS\obj\Debug\net8.0\Seminar2ISS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Raul\Desktop\SGBD\Lab1\Seminar2ISS\Seminar2ISS\obj\Debug\net8.0\Seminar2ISS.AssemblyInfoInputs.cache
+C:\Users\Raul\Desktop\SGBD\Lab1\Seminar2ISS\Seminar2ISS\obj\Debug\net8.0\Seminar2ISS.AssemblyInfo.cs
+C:\Users\Raul\Desktop\SGBD\Lab1\Seminar2ISS\Seminar2ISS\obj\Debug\net8.0\Seminar2ISS.csproj.CoreCompileInputs.cache
+C:\Users\Raul\Desktop\SGBD\Lab1\Seminar2ISS\Seminar2ISS\obj\Debug\net8.0\Seminar2ISS.dll
+C:\Users\Raul\Desktop\SGBD\Lab1\Seminar2ISS\Seminar2ISS\obj\Debug\net8.0\refint\Seminar2ISS.dll
+C:\Users\Raul\Desktop\SGBD\Lab1\Seminar2ISS\Seminar2ISS\obj\Debug\net8.0\Seminar2ISS.pdb
+C:\Users\Raul\Desktop\SGBD\Lab1\Seminar2ISS\Seminar2ISS\obj\Debug\net8.0\Seminar2ISS.genruntimeconfig.cache
+C:\Users\Raul\Desktop\SGBD\Lab1\Seminar2ISS\Seminar2ISS\obj\Debug\net8.0\ref\Seminar2ISS.dll
