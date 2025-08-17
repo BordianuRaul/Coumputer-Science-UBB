@@ -1,0 +1,33 @@
+
+%if H is > max, H becomes the new max
+find_max([H|T],Max,R):-
+    H > Max,find_max(T,H, H).
+
+%if H is < max, max stays the same
+find_max([H|T],Max,R):-
+    H < Max, find_max(T,Max, Max).
+
+%if the list is empty, return max
+find_max([],max,max).
+
+%wrapper for max
+max([H|T],R):-
+    find_max([H|T],H,R).
+
+%if the H is equal to max, then do not add it in the result list
+remove_occ([H|T],Max,R):-
+    max = H, remove_occ(T,Max,R).
+
+%if the H is not equal, add it to the result
+remove_occ([H|T],Max,R):-
+     H \= max, remove_occ(T, Max, [H|R]).
+
+%if list is empty, return nothing
+remove_occ([], _, []).
+
+remove([H,T],R):-
+    remove_occ([H|T], max([H|T]), R).
+
+
+
+

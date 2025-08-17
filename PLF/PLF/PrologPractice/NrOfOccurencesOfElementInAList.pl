@@ -1,0 +1,25 @@
+%NrOccurences(list - list ,element - elementThatIsSearched,R - result)
+%flow(i,i,o), (i,i,i)
+
+nrOccurrences([], _, 0).
+
+nrOccurrences([H | T], Element, R) :-
+    H = Element,
+    nrOccurrences(T, Element, R1),
+    R is R1 + 1.
+
+nrOccurrences([H | T], Element, R) :-
+    H \= Element,
+    nrOccurrences(T, Element, R).
+
+
+nrOcc([],Colector,_,Colector).
+
+nrOcc([H|T],Colector, Element, R):-
+    H=Element,
+    Colector1 is Colector + 1,
+    nrOcc(T,Colector1,Element,R).
+
+nrOcc([H|T],Colector,Element,R):-
+    H\=Element,
+    nrOcc(T,Colector,Element,R).

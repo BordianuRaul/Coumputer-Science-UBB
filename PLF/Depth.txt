@@ -1,0 +1,14 @@
+(defun depth (tree)
+  (cond
+    ((null tree) 0)
+    ((atom tree) 1)
+    (t (+ 1 (max-depth (cdr tree))))))
+
+(defun max-depth (subtrees)
+  (cond
+    ((null subtrees) 0)
+    (t (max (depth (car subtrees))
+            (max-depth (cdr subtrees))))))
+
+(setq example-tree '(A (B (C) D) E (F G)))
+(print(depth example-tree))

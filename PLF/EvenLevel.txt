@@ -1,0 +1,14 @@
+(defun sau (l)
+  (cond
+    ((null l) NIL)
+    (T (OR (CAR l) (sau (cdr l))))
+  )
+)
+(defun nivel (l niv e)
+  (cond
+    ((AND (atom l) (equal l e) (equal (mod niv 2) 0)) T)
+    ((AND (atom l) (equal l e) (equal (mod niv 2) 1)) NIL)
+    ((AND (atom l) (not (equal l e))) NIL)
+    (T (sau (mapcar #'(lambda (l) (nivel l (+ niv 1) e)) l)))
+  )
+)

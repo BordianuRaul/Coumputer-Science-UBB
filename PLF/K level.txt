@@ -1,0 +1,12 @@
+(defun elim (l niv k)
+  (cond
+    ((and (atom l) (equal niv k))
+     (list l))
+    ((listp l)
+     (mapcan #'(lambda (x) (elim x (+ niv 1) k)) l))
+    (t nil)))
+
+(defun main (l k)
+  (elim l -1 k))
+
+(print (main '(A (B) (C (D) (E))) 1))

@@ -1,0 +1,25 @@
+% 7. A player wants to choose predictions for 4 games.
+% The predictions can be 1, X, 2.
+% Write a predicate to generate all possible combinations, considering that:
+% The last prediction can't be 2, and there can be no more than two 'X' predictions.
+
+
+candidate(1).
+candidate(3). %X
+candidate(2).
+
+
+generate(4, R, R, _):-!.
+
+generate(N, C, R, P):-
+    candidate(X),
+    N1 is N + 1,
+    P1 is P * X,
+    P1 mod 27 =\= 0, 
+    generate(N1, [X|C], R, P1).
+
+results(R):-generate(1, [1], R, 1).
+results(R):-generate(1, [3], R, 1).
+
+all_solutions(R) :-
+    findall(RPartial, results(RPartial), R).

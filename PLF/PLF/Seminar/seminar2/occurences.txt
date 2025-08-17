@@ -1,0 +1,57 @@
+
+count(l1,...,ln,x)=
+{
+    0, n = 0
+    count(l2,...,ln,x), n >= 1 and x != l1
+    1 + count(l2,...,ln,x), n >= 1 and x = l1
+}
+
+count(l1,...,ln,e,colector)=
+{
+    col, n = 0
+    count(l2,...,ln, e,colector), n > 1 and e != l1
+    count(l2,...,ln, e, colector +1), n >= 1 and e = l1
+}
+
+main(l1,...,ln, e) = 
+{
+    count(l1,...,ln,e,0)
+}
+
+write a predicate to remove from a list all the elements that appear only once
+
+remove(l1,...,ln,p1,...,pm(copy of l))=
+{
+    [], n = 0
+    l1 U remove(l2,...,ln,p1,...,pm),count(p1,...,pn,l1) > 1 and n >= 1
+    remove(l2,...,ln,p1,...,pn),count(p1,...,pn,l1) = 1 and n >=1
+}
+
+main(l1,...,ln) = {remove(l1,...,ln,l1,...,ln)}
+
+remove(l1,...,ln,p1,...,pn,c1,...,ck)
+{
+    c1,...,ck , n = 0
+    remove(l2,...,ln,p1,...,pn,c1,...,ck), count(p1,...,pm,l1) = 1
+    remove_col(l2,...,ln,p1,...,pm,c1,...,ck U l1) > 1
+    
+}
+
+remove_sublist(l1,...,ln) = 
+{
+    [], n = 0
+    remove_sublist(l2,...,ln), is_list(l1)
+    l1 U remove_sublist(l2,...,ln) !is_list(l1)
+}
+
+gcd(a,b)=
+{
+    a, b = 0
+    gcd(b, a % b), b != 0
+}
+
+gcd_list(l1,...,ln)=
+{
+    l1, n = 1
+    gcd_list(gcd(l1,l2),...,ln)
+}

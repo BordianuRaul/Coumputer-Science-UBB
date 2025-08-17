@@ -1,0 +1,56 @@
+%count(list, elem, output_counter)
+% Flow(i,i,o), (i,i,i)
+
+count([],_,0).
+count([H|T], x, c):-
+    x \= H,
+    count(T,x,nc),
+    c is nc.
+count([H|T],x,c):-
+    x = H,
+    count(T,x,nc),
+    C is NC + 1.
+
+
+%count2(list,element,colector,output)
+%Flow model: (i,i,i,i)/(i,i,i,o)
+
+count1([],_,colector,colector).
+count1([H|T], H, colector, o):-
+    newColector is colector + 1,
+    count(T, H, newColector, o).
+count1([H|T],e,colector,o):-
+    H=\=e,
+    count(T,e,colector,o).
+
+
+main1(L, e):-
+    colector is 0,
+    count1(L, e, colector, o).
+
+%main(list)
+%flow (i)
+
+main2(list,out):-
+     remove(list,list,out).
+
+
+remove([],_,[]).
+remove([H|T],L,o):-
+    count(L,H).%????
+
+%remove1(list,output)
+%flow(i,o)
+
+remove1([],_,c,c).
+remove1([H|T], L, c, r):-
+    %count
+    main1(L,H,1),
+    rem_col(T,L,c,r).
+remove1([H|T],L,c,r):-
+    addToEnd(C, H, newC),
+    remColector(T,L,newC,r).
+
+
+
+
