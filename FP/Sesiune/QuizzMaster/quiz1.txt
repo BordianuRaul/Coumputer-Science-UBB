@@ -1,0 +1,8 @@
+1Are ana mere?,da,nu,poate,da,easy
+2Are ana mere?,da,nu,poate,poate,easy
+3Are ana mere?,da,nu,poate,da,easy
+4Are ana mere?,da,nu,poate,poate,easy
+5Are ana mere?,da,nu,poate,da,medium
+6Are ana mere?,da,nu,poate,da,medium
+7Are ana mere?,da,nu,poate,da,hard
+8Are ana mere?,da,nu,poate,nu,hard
