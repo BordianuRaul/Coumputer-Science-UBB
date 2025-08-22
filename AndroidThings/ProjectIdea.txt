@@ -1,0 +1,4 @@
+Smart Home Temperature Monitor
+
+Using the DHT11 sensor along with other electronic components, this project aims to monitor the temperature and humidity inside a house, providing constant data about the indoor environment.
+Additionally, a buzzer can be used to alert the user when significant changes in humidity or temperature levels occur.
